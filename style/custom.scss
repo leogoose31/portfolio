@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+
+// Import des fontes
+$web-font-path: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap";
+
+// Fontes Bootstrap
+$font-family-sans-serif: "Inter", system-ui, sans-serif;
+$headings-font-family: "Space Grotesk", sans-serif;
+$font-family-monospace: "JetBrains Mono", monospace;
+
+// Taille et interlignage
+$font-size-base: 0.975rem;
+$line-height-base: 1.65;
+
+// Couleurs de base
+$body-color: #333;
+$headings-color: #111;

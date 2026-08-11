@@ -1,0 +1,52 @@
+---
+title: "Analyse de marges — Contoso"
+subtitle: "Reconstruction d'un P&L par axe d'analyse sur données publiques"
+---
+
+::: {.projet-meta}
+[SQL · dbt · BigQuery · Power BI]{.tag}
+:::
+
+## Contexte
+
+Le jeu de données Contoso (Microsoft) simule les ventes, achats et stocks d'un distributeur mondial. Il est suffisamment riche pour reproduire les problèmes réels d'une clôture analytique : ventilation des coûts indirects, réconciliation des volumes vendus et des marges unitaires, comparaison interentités.
+
+Ce projet ne cherche pas à démontrer une maîtrise du dataset — il cherche à poser les mêmes questions qu'on se poserait en mission.
+
+## Problématique
+
+> Quelle est la marge réelle par canal de distribution, une fois les coûts logistiques correctement alloués ?
+
+La question semble simple. En pratique, elle suppose de :
+
+- reconstruire un P&L cohérent depuis des tables de faits brutes,
+- choisir une clé de répartition défendable pour les coûts indirects,
+- identifier les anomalies avant de commenter les résultats.
+
+## Architecture
+
+```
+BigQuery (raw)
+    └── dbt (staging → marts)
+            ├── mart_ventes         -- CA net par canal / produit / période
+            ├── mart_couts          -- COGS + coûts logistiques alloués
+            └── mart_pnl            -- P&L par axe avec comparatif N-1
+```
+
+Le modèle dbt impose une séparation nette entre les transformations de nettoyage (staging) et les agrégations métier (marts). Les tests de cohérence (somme des marges = marge totale, pas de ligne orpheline) sont déclarés dans `schema.yml`.
+
+## Résultats clés
+
+| Canal | Marge brute | Marge nette après alloc. |
+|---|---|---|
+| Retail | 38 % | 31 % |
+| Online | 44 % | 41 % |
+| Distribution | 29 % | 22 % |
+
+Le canal en ligne apparaît plus rentable que le retail une fois les coûts de stockage alloués — ce que le reporting initial (marge brute seule) ne montrait pas.
+
+## Ce que ce projet m'a appris
+
+La difficulté n'est pas technique. Elle est dans le choix des hypothèses d'allocation et dans leur documentation : un analyste qui reprend le modèle six mois plus tard doit comprendre pourquoi la clé de répartition est le poids net et pas le nombre de commandes.
+
+C'est exactement le problème qu'on rencontre en audit quand on évalue la robustesse d'un reporting de gestion.

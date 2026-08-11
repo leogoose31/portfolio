@@ -1,0 +1,49 @@
+---
+title: "Parcours"
+---
+
+## Profil {.section-title}
+
+Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022.
+Mémorialiste DEC, titulaire du DSCG.
+
+Profil à l'intersection de l'audit financier et de l'analyse de données :
+maîtrise des référentiels comptables et des processus business, 
+complétée par des compétences en SQL, dbt et Python appliquées
+à des problématiques de contrôle et de reporting.
+
+## Expérience {.section-title}
+
+### Forvis Mazars — Auditeur financier senior
+::: {.travail-meta}
+Toulouse · depuis 2022
+:::
+
+Audit légal et contractuel. Gestion d'audit de groupe sous ISA 600R, audit
+des systèmes d'information (ITGC / ITAC sous SAP), automatisation
+de procédures sur le cycle Achats-Fournisseurs.
+
+## Formation et titres {.section-title}
+
+| | |
+|---|---|
+| DEC | Mémoire en cours — analyse prédictive d'activité appliquée au commerce de proximité |
+| DSCG | Mémoire sur la modélisation prédictive appliquée aux prévisions comptables |
+| Certification | Analytics Engineer |
+
+## Compétences techniques {.section-title}
+
+
+
+| | |
+|---|---|
+| Interrogation | SQL, BigQuery |
+| Transformation | dbt, Alteryx, Python |
+| Restitution | Power BI |
+| Modélisation | XGBoost, SHAP |
+| Métier | SAP, contrôles ITGC / ITAC |
+
+## Hors du bureau {.section-title}
+
+Cycliste et coureur. J'analyse mes propres données d'entraînement depuis
+deux ans.
