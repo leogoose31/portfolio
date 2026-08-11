@@ -1,0 +1,53 @@
+---
+title: "Où part la marge : décomposition par canal de distribution"
+subtitle: "Reconstruction d'un P&L analytique sur données Contoso pour identifier les drivers d'écart entre marge brute et marge nette."
+---
+
+::: {.projet-meta}
+[SQL]{.tag}
+[dbt]{.tag}
+[BigQuery]{.tag}
+[Power BI]{.tag}
+:::
+
+## Le problème
+
+Un distributeur multi-canal affiche une marge brute globale satisfaisante. Le reporting de pilotage, construit sur cette seule métrique, masque des écarts importants entre canaux une fois les coûts logistiques alloués.
+
+La question : quelle est la marge nette réelle par canal de distribution, et quels en sont les drivers ?
+
+## L'approche
+
+Reconstruction d'un P&L par axe (canal, produit, période) depuis les tables brutes du dataset public Contoso (Microsoft). Le pipeline suit une architecture dbt en deux couches :
+
+```
+BigQuery (raw)
+    └── dbt
+            ├── staging       — nettoyage, typage, renommage
+            └── marts
+                ├── mart_ventes   — CA net par canal / produit / période
+                ├── mart_couts    — COGS + coûts logistiques alloués
+                └── mart_pnl      — P&L par axe avec comparatif N-1
+```
+
+Clé d'allocation des coûts logistiques : poids net des commandes. Les tests de cohérence (somme des marges = total, absence de lignes orphelines) sont déclarés dans `schema.yml`.
+
+## Le résultat
+
+| Canal        | Marge brute | Marge nette |
+|---|---|---|
+| Online       | 44 %        | 41 %        |
+| Retail       | 38 %        | 31 %        |
+| Distribution | 29 %        | 22 %        |
+
+Le canal en ligne est significativement plus rentable que le retail après allocation — l'inverse n'est pas visible sur la marge brute seule. L'écart retail / distribution sur la marge nette (9 pts) est presque entièrement expliqué par les coûts de stockage.
+
+## Limites
+
+Le choix de la clé d'allocation (poids net) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes.
+
+## Reproduire
+
+Données : [Contoso Sales Dataset — Microsoft](https://github.com/microsoft/powerbi-desktop-samples/tree/main/AdventureWorks%20Sales%20Sample)
+
+Dépôt : [À COMPLÉTER]

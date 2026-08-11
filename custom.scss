@@ -1,0 +1,381 @@
+/*-- scss:defaults --*/
+
+// Fontes (2 familles max)
+$web-font-path: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
+
+// Palette
+$paper:       #ffffff;
+$paper-dim:   #f4f4f5;   // fonds code inline, tags
+$ink:         #09090b;   // titres, texte fort
+$ink-mid:     #3f3f46;   // corps de texte
+$ink-muted:   #a1a1aa;   // méta, labels, secondaire
+$accent:      #09090b;   // liens, états actifs (monochrome)
+$rule:        #e4e4e7;   // filets, bordures
+$code-bg:     #09090b;   // fond blocs de code
+$code-fg:     #e4e4e7;   // texte dans blocs de code
+
+// Échelle typographique — ratio 1.25 (Major Third)
+$scale-xs:    0.64rem;   // labels uppercase
+$scale-sm:    0.8rem;    // méta, tags, small
+$scale-base:  1rem;      // corps
+$scale-lg:    1.25rem;   // h3
+$scale-xl:    1.563rem;  // —
+$scale-2xl:   1.953rem;  // h1
+
+// Unité d'espacement
+$sp: 1.5rem;
+
+// Rayon de bordure unique
+$radius: 0px;
+
+// Mapping Bootstrap / Quarto
+$font-family-sans-serif:  "Inter", system-ui, -apple-system, sans-serif;
+$headings-font-family:    "Inter", system-ui, -apple-system, sans-serif;
+$font-family-monospace:   "JetBrains Mono", monospace;
+
+$body-bg:                 $paper;
+$body-color:              $ink-mid;
+$headings-color:          $ink;
+$link-color:              $accent;
+$link-hover-color:        $ink;
+$link-decoration:         none;
+
+$font-size-base:          $scale-base;
+$line-height-base:        1.72;
+
+$h1-font-size:            $scale-2xl;
+$h2-font-size:            $scale-sm;
+$h3-font-size:            $scale-base;
+$h4-font-size:            $scale-base;
+
+$headings-font-weight:    600;
+$headings-line-height:    1.15;
+
+$border-color:            $rule;
+$border-radius:           $radius;
+$border-radius-sm:        $radius;
+$border-radius-lg:        $radius;
+$border-radius-xl:        $radius;
+$border-radius-xxl:       $radius;
+
+$code-color:              $ink;
+$pre-color:               $code-fg;
+
+
+/*-- scss:rules --*/
+
+// ---- Base
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---- Sidebar gauche
+#quarto-sidebar {
+  background: $paper-dim;
+  border-right: 1px solid $rule;
+}
+
+.sidebar-title {
+  display: block;
+  font-size: $scale-base;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $ink;
+  padding: ($sp * 1.15) $sp ($sp * 0.85);
+  border-bottom: 1px solid $rule;
+  margin-bottom: calc($sp / 2);
+}
+
+.sidebar-item-text.sidebar-link {
+  font-size: $scale-sm;
+  font-weight: 400;
+  color: $ink-muted;
+  padding: 0.4rem $sp;
+  display: block;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.12s;
+}
+
+.sidebar-item-text.sidebar-link:hover {
+  color: $ink;
+}
+
+.sidebar-item-text.sidebar-link.active {
+  color: $ink;
+  font-weight: 500;
+  border-left-color: $ink;
+}
+
+// ---- TOC droite
+#quarto-margin-sidebar {
+  padding-top: calc($sp * 2.35);
+}
+
+nav#TOC > h2,
+div#quarto-margin-sidebar h2#toc-title {
+  font-size: $scale-xs;  // délibérément plus petit — c'est un label de navigation
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $ink-muted;
+  margin: 0 0 calc($sp / 2);
+  border: none;
+  padding: 0;
+}
+
+nav#TOC ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+nav#TOC .nav-link {
+  font-size: 0.75rem;
+  color: $ink-muted;
+  padding: 0.2rem 0;
+  display: block;
+  text-decoration: none;
+  border: none;
+  line-height: 1.5;
+  transition: color 0.12s;
+}
+
+nav#TOC .nav-link:hover,
+nav#TOC .nav-link.active {
+  color: $ink;
+}
+
+// ---- Contenu
+main.content {
+  padding-top: calc($sp * 2);
+  padding-bottom: calc($sp * 4);
+}
+
+// ---- Titres
+h1, .quarto-title h1.title {
+  font-size: $scale-2xl;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: $ink;
+  margin-bottom: calc($sp / 4);
+}
+
+h2 {
+  font-size: $scale-sm;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $ink-muted;
+  margin-top: calc($sp * 2);
+  margin-bottom: calc($sp * 0.65);
+  border: none;
+}
+
+h3 {
+  font-size: $scale-base;
+  font-weight: 600;
+  color: $ink;
+  letter-spacing: -0.01em;
+  margin-top: calc($sp * 1.15);
+  margin-bottom: calc($sp / 6);
+}
+
+// ---- Sous-titres Quarto
+p.subtitle.lead,
+.quarto-title .subtitle,
+.hero .subtitle p {
+  font-size: $scale-sm;
+  font-weight: 400;
+  color: $ink-muted;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+// ---- Corps
+p {
+  font-size: $scale-base;
+  color: $ink-mid;
+  line-height: 1.72;
+  margin-bottom: calc($sp * 0.6);
+  max-width: 68ch;
+}
+
+a {
+  color: $accent;
+  text-decoration: none;
+  border-bottom: 1px solid $rule;
+  transition: border-color 0.12s, color 0.12s;
+}
+
+a:hover {
+  color: $ink;
+  border-bottom-color: $ink;
+}
+
+strong {
+  font-weight: 600;
+  color: $ink;
+}
+
+// ---- Hero
+.hero {
+  padding-top: calc($sp / 3);
+  padding-bottom: calc($sp * 1.65);
+  border-bottom: 1px solid $rule;
+}
+
+.hero h1 {
+  font-size: $scale-2xl * 1.15;
+}
+
+.hero p {
+  color: $ink-mid;
+}
+
+.tools {
+  display: block;
+  font-family: $font-family-monospace;
+  font-size: $scale-sm;
+  color: $ink-muted;
+  letter-spacing: 0.01em;
+  margin-top: calc($sp / -8);
+  margin-bottom: 0;
+}
+
+.cta-links {
+  display: flex;
+  gap: $sp;
+  margin-top: calc($sp * 1.35);
+}
+
+.cta-links a {
+  font-size: $scale-sm;
+  font-weight: 500;
+  color: $ink-mid;
+  border-bottom: 1px solid $rule;
+  padding-bottom: 1px;
+  transition: color 0.12s, border-color 0.12s;
+}
+
+.cta-links a:hover {
+  color: $ink;
+  border-bottom-color: $ink;
+}
+
+// ---- Parcours : meta
+.travail-meta {
+  font-size: $scale-sm;
+  color: $ink-muted;
+  margin-top: calc($sp / -7);
+  margin-bottom: calc($sp * 0.6);
+}
+
+// ---- Tableaux
+table {
+  font-size: $scale-sm * 1.07;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: calc($sp * 0.85);
+}
+
+table td {
+  padding: calc($sp / 3.75) 0;
+  border: none;
+  vertical-align: top;
+  color: $ink-mid;
+}
+
+table td:first-child {
+  font-size: $scale-sm;
+  color: $ink-muted;
+  padding-right: calc($sp * 1.35);
+  min-width: 120px;
+  white-space: nowrap;
+}
+
+// ---- Projets : liste
+.projet-card {
+  padding: $sp 0;
+  border-top: 1px solid $rule;
+}
+
+.projet-card:last-child {
+  border-bottom: 1px solid $rule;
+}
+
+.projet-card h3 { margin-top: 0; }
+
+.projet-card h3 a {
+  color: $ink;
+  border-bottom: none;
+}
+
+.projet-card h3 a:hover { color: $ink-muted; }
+
+.projet-card p {
+  font-size: $scale-sm * 1.07;
+  color: $ink-muted;
+  margin-bottom: calc($sp / 2);
+}
+
+.projet-card .tags {
+  display: flex;
+  gap: calc($sp / 5);
+  flex-wrap: wrap;
+}
+
+// ---- Tags
+.tag {
+  font-family: $font-family-monospace;
+  font-size: $scale-xs * 1.07;
+  color: $ink-muted;
+  background: $paper-dim;
+  padding: calc($sp / 10) calc($sp / 3);
+}
+
+// ---- Projet detail : meta
+.projet-meta {
+  display: flex;
+  gap: calc($sp / 5);
+  flex-wrap: wrap;
+  margin-bottom: calc($sp * 1.35);
+}
+
+// ---- Code inline
+p code, li code {
+  font-family: $font-family-monospace;
+  background: $paper-dim;
+  padding: 0.1em 0.4em;
+  font-size: 0.82em;
+  color: $ink;
+}
+
+// ---- Bloc de code
+pre {
+  background: $code-bg;
+  padding: $sp calc($sp * 1.15);
+  font-size: $scale-sm;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: $code-fg;
+  margin-bottom: $sp;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+// ---- Quarto overrides
+.quarto-title-meta { display: none; }
+
+// ---- Séparateur
+hr {
+  border: none;
+  border-top: 1px solid $rule;
+  margin: $sp 0;
+}

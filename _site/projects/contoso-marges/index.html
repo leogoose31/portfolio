@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Analyse de marges — Contoso – Léo Gouzy</title>
+<title>Où part la marge : décomposition par canal de distribution – Léo Gouzy</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -45,13 +45,13 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f4388760b4213d6f7381959b935ecb9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-08b336342a51c5d4df804b0a9f92fc2f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-df35f728f0b905ac0d61d36ba8fd3d50.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -75,57 +75,87 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Léo Gouzy</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../parcours.html"> 
-<span class="menu-text">Parcours</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../projets/index.html"> 
-<span class="menu-text">Projets</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Léo Gouzy
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Léo Gouzy</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accueil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parcours</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projets</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sur cette page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#le-problème" id="toc-le-problème" class="nav-link active" data-scroll-target="#le-problème">Le problème</a></li>
+  <li><a href="#lapproche" id="toc-lapproche" class="nav-link" data-scroll-target="#lapproche">L’approche</a></li>
+  <li><a href="#le-résultat" id="toc-le-résultat" class="nav-link" data-scroll-target="#le-résultat">Le résultat</a></li>
+  <li><a href="#limites" id="toc-limites" class="nav-link" data-scroll-target="#limites">Limites</a></li>
+  <li><a href="#reproduire" id="toc-reproduire" class="nav-link" data-scroll-target="#reproduire">Reproduire</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analyse de marges — Contoso</h1>
-<p class="subtitle lead">Reconstruction d’un P&amp;L par axe d’analyse sur données publiques</p>
+<h1 class="title">Où part la marge : décomposition par canal de distribution</h1>
+<p class="subtitle lead">Reconstruction d’un P&amp;L analytique sur données Contoso pour identifier les drivers d’écart entre marge brute et marge nette.</p>
 </div>
 
 
@@ -143,54 +173,45 @@ ul.task-list li input[type="checkbox"] {
 
 
 <div class="projet-meta">
-<p><span class="tag">SQL · dbt · BigQuery · Power BI</span></p>
+<p><span class="tag">SQL</span> <span class="tag">dbt</span> <span class="tag">BigQuery</span> <span class="tag">Power BI</span></p>
 </div>
-<section id="contexte" class="level2">
-<h2 class="anchored" data-anchor-id="contexte">Contexte</h2>
-<p>Le jeu de données Contoso (Microsoft) simule les ventes, achats et stocks d’un distributeur mondial. Il est suffisamment riche pour reproduire les problèmes réels d’une clôture analytique : ventilation des coûts indirects, réconciliation des volumes vendus et des marges unitaires, comparaison interentités.</p>
-<p>Ce projet ne cherche pas à démontrer une maîtrise du dataset — il cherche à poser les mêmes questions qu’on se poserait en mission.</p>
+<section id="le-problème" class="level2">
+<h2 class="anchored" data-anchor-id="le-problème">Le problème</h2>
+<p>Un distributeur multi-canal affiche une marge brute globale satisfaisante. Le reporting de pilotage, construit sur cette seule métrique, masque des écarts importants entre canaux une fois les coûts logistiques alloués.</p>
+<p>La question : quelle est la marge nette réelle par canal de distribution, et quels en sont les drivers ?</p>
 </section>
-<section id="problématique" class="level2">
-<h2 class="anchored" data-anchor-id="problématique">Problématique</h2>
-<blockquote class="blockquote">
-<p>Quelle est la marge réelle par canal de distribution, une fois les coûts logistiques correctement alloués ?</p>
-</blockquote>
-<p>La question semble simple. En pratique, elle suppose de :</p>
-<ul>
-<li>reconstruire un P&amp;L cohérent depuis des tables de faits brutes,</li>
-<li>choisir une clé de répartition défendable pour les coûts indirects,</li>
-<li>identifier les anomalies avant de commenter les résultats.</li>
-</ul>
-</section>
-<section id="architecture" class="level2">
-<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<section id="lapproche" class="level2">
+<h2 class="anchored" data-anchor-id="lapproche">L’approche</h2>
+<p>Reconstruction d’un P&amp;L par axe (canal, produit, période) depuis les tables brutes du dataset public Contoso (Microsoft). Le pipeline suit une architecture dbt en deux couches :</p>
 <pre><code>BigQuery (raw)
-    └── dbt (staging → marts)
-            ├── mart_ventes         -- CA net par canal / produit / période
-            ├── mart_couts          -- COGS + coûts logistiques alloués
-            └── mart_pnl            -- P&amp;L par axe avec comparatif N-1</code></pre>
-<p>Le modèle dbt impose une séparation nette entre les transformations de nettoyage (staging) et les agrégations métier (marts). Les tests de cohérence (somme des marges = marge totale, pas de ligne orpheline) sont déclarés dans <code>schema.yml</code>.</p>
+    └── dbt
+            ├── staging       — nettoyage, typage, renommage
+            └── marts
+                ├── mart_ventes   — CA net par canal / produit / période
+                ├── mart_couts    — COGS + coûts logistiques alloués
+                └── mart_pnl      — P&amp;L par axe avec comparatif N-1</code></pre>
+<p>Clé d’allocation des coûts logistiques : poids net des commandes. Les tests de cohérence (somme des marges = total, absence de lignes orphelines) sont déclarés dans <code>schema.yml</code>.</p>
 </section>
-<section id="résultats-clés" class="level2">
-<h2 class="anchored" data-anchor-id="résultats-clés">Résultats clés</h2>
+<section id="le-résultat" class="level2">
+<h2 class="anchored" data-anchor-id="le-résultat">Le résultat</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Canal</th>
 <th>Marge brute</th>
-<th>Marge nette après alloc.</th>
+<th>Marge nette</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Retail</td>
-<td>38 %</td>
-<td>31 %</td>
-</tr>
-<tr class="even">
 <td>Online</td>
 <td>44 %</td>
 <td>41 %</td>
+</tr>
+<tr class="even">
+<td>Retail</td>
+<td>38 %</td>
+<td>31 %</td>
 </tr>
 <tr class="odd">
 <td>Distribution</td>
@@ -199,12 +220,16 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>Le canal en ligne apparaît plus rentable que le retail une fois les coûts de stockage alloués — ce que le reporting initial (marge brute seule) ne montrait pas.</p>
+<p>Le canal en ligne est significativement plus rentable que le retail après allocation — l’inverse n’est pas visible sur la marge brute seule. L’écart retail / distribution sur la marge nette (9 pts) est presque entièrement expliqué par les coûts de stockage.</p>
 </section>
-<section id="ce-que-ce-projet-ma-appris" class="level2">
-<h2 class="anchored" data-anchor-id="ce-que-ce-projet-ma-appris">Ce que ce projet m’a appris</h2>
-<p>La difficulté n’est pas technique. Elle est dans le choix des hypothèses d’allocation et dans leur documentation : un analyste qui reprend le modèle six mois plus tard doit comprendre pourquoi la clé de répartition est le poids net et pas le nombre de commandes.</p>
-<p>C’est exactement le problème qu’on rencontre en audit quand on évalue la robustesse d’un reporting de gestion.</p>
+<section id="limites" class="level2">
+<h2 class="anchored" data-anchor-id="limites">Limites</h2>
+<p>Le choix de la clé d’allocation (poids net) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes.</p>
+</section>
+<section id="reproduire" class="level2">
+<h2 class="anchored" data-anchor-id="reproduire">Reproduire</h2>
+<p>Données : <a href="https://github.com/microsoft/powerbi-desktop-samples/tree/main/AdventureWorks%20Sales%20Sample">Contoso Sales Dataset — Microsoft</a></p>
+<p>Dépôt : [À COMPLÉTER]</p>
 
 
 </section>
@@ -283,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/leogoose31\.github\.io\/portfolio");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

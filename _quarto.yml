@@ -1,21 +1,28 @@
 project:
   type: website
+  render:
+    - "*.qmd"
+    - "projects/**/*.qmd"
 
 website:
   title: "Léo Gouzy"
-  navbar:
-    left:
+  site-url: "https://leogoose31.github.io/portfolio"
+  sidebar:
+    style: "docked"
+    contents:
       - href: index.qmd
         text: Accueil
-      - href: parcours.qmd
+      - href: about.qmd
         text: Parcours
-      - href: projets/index.qmd
+      - href: projects/index.qmd
         text: Projets
 
 format:
   html:
     theme:
       - cosmo
-      - style/custom.scss
-    css: styles.css
-    toc: false
+      - custom.scss
+    toc: true
+    toc-location: right
+    toc-depth: 2
+    toc-title: "Sur cette page"

@@ -13,10 +13,10 @@ Auditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DS
 
 À l'intersection de la comptabilité et de l'analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l'audit manuel ne couvre pas.
 
-SQL · dbt · Python · Power BI
+[SQL · dbt · Python · Power BI]{.tools}
 
 ::: {.cta-links}
-[Parcours](/parcours.html)
-[Projets](/projets/index.html)
+[Parcours](about.html)
+[Projets](projects/index.html)
 :::
 :::

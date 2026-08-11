@@ -1,0 +1,16 @@
+---
+title: "Projets"
+---
+
+::: {.projet-card}
+### [Où part la marge : décomposition par canal de distribution](contoso-marges/index.html)
+
+Reconstruction d'un P&L analytique depuis des tables brutes. Identification des drivers d'écart entre marge brute et marge nette par canal, sur le jeu de données public Contoso.
+
+::: {.tags}
+[SQL]{.tag}
+[dbt]{.tag}
+[BigQuery]{.tag}
+[Power BI]{.tag}
+:::
+:::

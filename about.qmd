@@ -8,7 +8,7 @@ Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2
 Mémorialiste DEC, titulaire du DSCG.
 
 Profil à l'intersection de l'audit financier et de l'analyse de données :
-maîtrise des référentiels comptables et des processus business, 
+maîtrise des référentiels comptables et des processus business,
 complétée par des compétences en SQL, dbt et Python appliquées
 à des problématiques de contrôle et de reporting.
 
@@ -32,8 +32,6 @@ de procédures sur le cycle Achats-Fournisseurs.
 | Certification | Analytics Engineer |
 
 ## Compétences techniques {.section-title}
-
-
 
 | | |
 |---|---|
