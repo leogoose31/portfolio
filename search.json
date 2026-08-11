@@ -4,80 +4,56 @@
     "href": "projects/index.html",
     "title": "Projets",
     "section": "",
-    "text": "Où part la marge : décomposition par canal de distribution\nReconstruction d’un P&L analytique depuis des tables brutes. Identification des drivers d’écart entre marge brute et marge nette par canal, sur le jeu de données public Contoso.\n\nSQL dbt BigQuery Power BI",
-    "crumbs": [
-      "Projets"
-    ]
+    "text": "Où part la marge : décomposition par canal de distribution\nReconstruction d’un P&L analytique depuis des tables brutes. Identification des drivers d’écart entre marge brute et marge nette par canal, sur le jeu de données public Contoso.\n\nSQL dbt BigQuery Power BI"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Léo Gouzy",
     "section": "",
-    "text": "Léo Gouzy\n\nAudit financier · Data analytics · Toulouse\n\nAuditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nÀ l’intersection de la comptabilité et de l’analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l’audit manuel ne couvre pas.\nSQL · dbt · Python · Power BI\n\nParcours Projets",
-    "crumbs": [
-      "Accueil"
-    ]
+    "text": "Léo Gouzy\n\nAudit financier · Data analytics · Toulouse\n\nAuditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nÀ l’intersection de la comptabilité et de l’analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l’audit manuel ne couvre pas.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "Parcours",
     "section": "",
-    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting.",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
   },
   {
     "objectID": "about.html#profil",
     "href": "about.html#profil",
     "title": "Parcours",
     "section": "",
-    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting.",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
   },
   {
     "objectID": "about.html#expérience",
     "href": "about.html#expérience",
     "title": "Parcours",
     "section": "Expérience",
-    "text": "Expérience\n\nForvis Mazars — Auditeur financier senior\n\nToulouse · depuis 2022\n\nAudit légal et contractuel. Gestion d’audit de groupe sous ISA 600R, audit des systèmes d’information (ITGC / ITAC sous SAP), automatisation de procédures sur le cycle Achats-Fournisseurs.",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Expérience\n\nForvis Mazars — Auditeur financier senior\n\nToulouse · depuis 2022\n\nAudit légal et contractuel. Gestion d’audit de groupe sous ISA 600R, audit des systèmes d’information (ITGC / ITAC sous SAP), automatisation de procédures sur le cycle Achats-Fournisseurs."
   },
   {
     "objectID": "about.html#formation-et-titres",
     "href": "about.html#formation-et-titres",
     "title": "Parcours",
     "section": "Formation et titres",
-    "text": "Formation et titres\n\n\n\n\n\n\n\nDEC\nMémoire en cours — analyse prédictive d’activité appliquée au commerce de proximité\n\n\nDSCG\nMémoire sur la modélisation prédictive appliquée aux prévisions comptables\n\n\nCertification\nAnalytics Engineer",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Formation et titres\n\n\n\n\n\n\n\nDEC\nMémoire en cours — analyse prédictive d’activité appliquée au commerce de proximité\n\n\nDSCG\nMémoire sur la modélisation prédictive appliquée aux prévisions comptables\n\n\nCertification\nAnalytics Engineer"
   },
   {
     "objectID": "about.html#compétences-techniques",
     "href": "about.html#compétences-techniques",
     "title": "Parcours",
     "section": "Compétences techniques",
-    "text": "Compétences techniques\n\n\n\nInterrogation\nSQL, BigQuery\n\n\nTransformation\ndbt, Alteryx, Python\n\n\nRestitution\nPower BI\n\n\nModélisation\nXGBoost, SHAP\n\n\nMétier\nSAP, contrôles ITGC / ITAC",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Compétences techniques\n\n\n\nInterrogation\nSQL, BigQuery\n\n\nTransformation\ndbt, Alteryx, Python\n\n\nRestitution\nPower BI\n\n\nModélisation\nXGBoost, SHAP\n\n\nMétier\nSAP, contrôles ITGC / ITAC"
   },
   {
     "objectID": "about.html#hors-du-bureau",
     "href": "about.html#hors-du-bureau",
     "title": "Parcours",
     "section": "Hors du bureau",
-    "text": "Hors du bureau\nCycliste et coureur. J’analyse mes propres données d’entraînement depuis deux ans.",
-    "crumbs": [
-      "Parcours"
-    ]
+    "text": "Hors du bureau\nCycliste et coureur. J’analyse mes propres données d’entraînement depuis deux ans."
   },
   {
     "objectID": "projects/contoso-marges/index.html",
