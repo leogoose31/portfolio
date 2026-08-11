@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Projets – Léo Gouzy</title>
+<title>Composants — page de validation – Léo Gouzy</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +29,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-091c3cd4ae248224db46d09edee246ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d85517e5cb876cc1658031cbf752b68f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-091c3cd4ae248224db46d09edee246ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d85517e5cb876cc1658031cbf752b68f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Léo Gouzy</span>
     </a>
   </div>
@@ -95,15 +95,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Accueil</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">Parcours</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../projects/index.html" aria-current="page"> 
+    <a class="nav-link" href="./projects/index.html"> 
 <span class="menu-text">Projets</span></a>
   </li>  
 </ul>
@@ -123,7 +123,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projets</h1>
+<h1 class="title">Composants — page de validation</h1>
+<p class="subtitle lead">Page interne, non liée dans la navigation. Rendu des composants du système Graphite &amp; Ardoise avec le contenu réel du projet Contoso.</p>
 </div>
 
 
@@ -140,15 +141,77 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="où-part-la-marge-décomposition-par-canal-de-distribution" class="level3 projet-card">
-<h3 class="anchored" data-anchor-id="où-part-la-marge-décomposition-par-canal-de-distribution"><a href="contoso-marges/index.html">Où part la marge : décomposition par canal de distribution</a></h3>
-<p>Reconstruction d’un P&amp;L analytique depuis des tables brutes. Identification des drivers d’écart entre marge brute et marge nette par canal, sur le jeu de données public Contoso.</p>
-<div class="tags">
-<p><span class="tag">SQL</span> <span class="tag">dbt</span> <span class="tag">BigQuery</span> <span class="tag">Power BI</span></p>
+<div class="eyebrow">
+<p>Contoso Retail · Décomposition de marge</p>
+</div>
+<section id="bloc-kpi" class="level2">
+<h2 class="anchored" data-anchor-id="bloc-kpi">Bloc KPI</h2>
+<div class="grid">
+<div class="g-col-12 g-col-md-4">
+<div class="kpi">
+<p><span class="kpi-value">41 %</span></p>
+<p><span class="kpi-label">Marge nette — canal Online</span></p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="kpi">
+<p><span class="kpi-value kpi-value--favorable">+10 pts</span></p>
+<p><span class="kpi-label">Écart de marge nette, Online vs Retail</span></p>
+</div>
+</div>
+<div class="g-col-12 g-col-md-4">
+<div class="kpi">
+<p><span class="kpi-value kpi-value--unfavorable">−9 pts</span></p>
+<p><span class="kpi-label">Écart de marge nette, Retail vs Distribution</span></p>
+</div>
+</div>
+</div>
+<p>L’écart entre Retail et Distribution est <span class="delta delta--unfavorable">presque entièrement expliqué par les coûts de stockage</span>, une fois la marge brute ramenée à la marge nette.</p>
+</section>
+<section id="tableau-financier" class="level2">
+<h2 class="anchored" data-anchor-id="tableau-financier">Tableau financier</h2>
+<div class="table-financial-wrap" tabindex="0">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Canal</th>
+<th>Marge brute</th>
+<th>Marge nette</th>
+<th>Écart brut → net</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Online</td>
+<td>44 %</td>
+<td>41 %</td>
+<td>3 pts</td>
+</tr>
+<tr class="even">
+<td>Retail</td>
+<td>38 %</td>
+<td>31 %</td>
+<td>7 pts</td>
+</tr>
+<tr class="odd">
+<td>Distribution</td>
+<td>29 %</td>
+<td>22 %</td>
+<td>7 pts</td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
+<section id="note-méthodologique" class="level2">
+<h2 class="anchored" data-anchor-id="note-méthodologique">Note méthodologique</h2>
+<div class="note-methodo">
+<p><span class="eyebrow note-methodo-label">Limites</span></p>
+<p>Le choix de la clé d’allocation des coûts logistiques (poids net des commandes) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes.</p>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
