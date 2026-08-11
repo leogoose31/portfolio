@@ -42,16 +42,16 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-f4388760b4213d6f7381959b935ecb9f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-091c3cd4ae248224db46d09edee246ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-df35f728f0b905ac0d61d36ba8fd3d50.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d85517e5cb876cc1658031cbf752b68f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -77,72 +77,60 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./about.html">Parcours</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Léo Gouzy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Accueil</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
+<span class="menu-text">Parcours</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./projects/index.html"> 
+<span class="menu-text">Projets</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Léo Gouzy</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Accueil</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Parcours</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./projects/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Projets</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Sur cette page</h2>
+    <h2 id="toc-title">On this page</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#profil" id="toc-profil" class="nav-link active" data-scroll-target="#profil">Profil</a></li>
-  <li><a href="#expérience" id="toc-expérience" class="nav-link" data-scroll-target="#expérience">Expérience</a></li>
-  <li><a href="#formation-et-titres" id="toc-formation-et-titres" class="nav-link" data-scroll-target="#formation-et-titres">Formation et titres</a></li>
-  <li><a href="#compétences-techniques" id="toc-compétences-techniques" class="nav-link" data-scroll-target="#compétences-techniques">Compétences techniques</a></li>
+  <li><a href="#expérience" id="toc-expérience" class="nav-link" data-scroll-target="#expérience">Expérience</a>
+  <ul class="collapse">
+  <li><a href="#forvis-mazars-auditeur-senior-data-analytics" id="toc-forvis-mazars-auditeur-senior-data-analytics" class="nav-link" data-scroll-target="#forvis-mazars-auditeur-senior-data-analytics">Forvis Mazars — Auditeur senior &amp; Data Analytics</a></li>
+  <li><a href="#forvis-mazars-auditeur-financier-si" id="toc-forvis-mazars-auditeur-financier-si" class="nav-link" data-scroll-target="#forvis-mazars-auditeur-financier-si">Forvis Mazars — Auditeur financier &amp; SI</a></li>
+  <li><a href="#orcom-apprenti-comptable" id="toc-orcom-apprenti-comptable" class="nav-link" data-scroll-target="#orcom-apprenti-comptable">Orcom — Apprenti comptable</a></li>
+  </ul></li>
+  <li><a href="#formation" id="toc-formation" class="nav-link" data-scroll-target="#formation">Formation</a></li>
+  <li><a href="#compétences" id="toc-compétences" class="nav-link" data-scroll-target="#compétences">Compétences</a></li>
   <li><a href="#hors-du-bureau" id="toc-hors-du-bureau" class="nav-link" data-scroll-target="#hors-du-bureau">Hors du bureau</a></li>
   </ul>
 </nav>
@@ -169,23 +157,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="profil" class="level2 section-title">
-<h2 class="section-title anchored" data-anchor-id="profil">Profil</h2>
-<p>Auditeur financier senior &amp; Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.</p>
-<p>Profil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting.</p>
+<section id="profil" class="level2">
+<h2 class="anchored" data-anchor-id="profil">Profil</h2>
+<p>5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).</p>
+<p>Profil à l’intersection de la finance et de la donnée : maîtrise des référentiels comptables, des processus business et des contrôles internes, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques d’audit et de reporting.</p>
 </section>
-<section id="expérience" class="level2 section-title">
-<h2 class="section-title anchored" data-anchor-id="expérience">Expérience</h2>
-<section id="forvis-mazars-auditeur-financier-senior" class="level3">
-<h3 class="anchored" data-anchor-id="forvis-mazars-auditeur-financier-senior">Forvis Mazars — Auditeur financier senior</h3>
+<section id="expérience" class="level2">
+<h2 class="anchored" data-anchor-id="expérience">Expérience</h2>
+<section id="forvis-mazars-auditeur-senior-data-analytics" class="level3">
+<h3 class="anchored" data-anchor-id="forvis-mazars-auditeur-senior-data-analytics">Forvis Mazars — Auditeur senior &amp; Data Analytics</h3>
 <div class="travail-meta">
-<p>Toulouse · depuis 2022</p>
+<p>Toulouse · depuis septembre 2025</p>
 </div>
-<p>Audit légal et contractuel. Gestion d’audit de groupe sous ISA 600R, audit des systèmes d’information (ITGC / ITAC sous SAP), automatisation de procédures sur le cycle Achats-Fournisseurs.</p>
+<p>Supervision d’une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification, revue des travaux, gestion des livrables. Déploiement d’outils Data Analytics (Alteryx, SQL, Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de plus d’un milliard d’euros. Audit combiné financier et SI, coordination internationale sur 15 pays.</p>
+</section>
+<section id="forvis-mazars-auditeur-financier-si" class="level3">
+<h3 class="anchored" data-anchor-id="forvis-mazars-auditeur-financier-si">Forvis Mazars — Auditeur financier &amp; SI</h3>
+<div class="travail-meta">
+<p>Toulouse · novembre 2023 — août 2025</p>
+</div>
+<p>Audit des contrôles financiers et des systèmes d’information (ITGC/ITAC) sous SAP et autres ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de données de plus d’un million d’écritures pour la détection d’anomalies et la validation des assertions financières.</p>
+</section>
+<section id="orcom-apprenti-comptable" class="level3">
+<h3 class="anchored" data-anchor-id="orcom-apprenti-comptable">Orcom — Apprenti comptable</h3>
+<div class="travail-meta">
+<p>Toulouse · septembre 2021 — octobre 2023</p>
+</div>
+<p>Gestion d’un portefeuille clients multi-secteurs : préparation des états financiers, accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par machine learning.</p>
 </section>
 </section>
-<section id="formation-et-titres" class="level2 section-title">
-<h2 class="section-title anchored" data-anchor-id="formation-et-titres">Formation et titres</h2>
+<section id="formation" class="level2">
+<h2 class="anchored" data-anchor-id="formation">Formation</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -194,48 +196,48 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>DEC</td>
-<td>Mémoire en cours — analyse prédictive d’activité appliquée au commerce de proximité</td>
+<td>Mémorialiste — en cours · Ordre des Experts-Comptables, Toulouse</td>
 </tr>
 <tr class="even">
-<td>DSCG</td>
-<td>Mémoire sur la modélisation prédictive appliquée aux prévisions comptables</td>
+<td>Analytics Engineer</td>
+<td>DataBird · 2025 — BigQuery, dbt, Fivetran, Git</td>
 </tr>
 <tr class="odd">
-<td>Certification</td>
-<td>Analytics Engineer</td>
+<td>DSCG</td>
+<td>Institut Limayrac · Toulouse · 2023</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="compétences-techniques" class="level2 section-title">
-<h2 class="section-title anchored" data-anchor-id="compétences-techniques">Compétences techniques</h2>
+<section id="compétences" class="level2">
+<h2 class="anchored" data-anchor-id="compétences">Compétences</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <tbody>
 <tr class="odd">
-<td>Interrogation</td>
-<td>SQL, BigQuery</td>
+<td>Finance</td>
+<td>Reporting financier, P&amp;L, contrôle interne, consolidation, IFRS</td>
 </tr>
 <tr class="even">
-<td>Transformation</td>
-<td>dbt, Alteryx, Python</td>
+<td>Données</td>
+<td>SQL, Python, dbt, BigQuery, Alteryx, Power BI</td>
 </tr>
 <tr class="odd">
-<td>Restitution</td>
-<td>Power BI</td>
+<td>Systèmes</td>
+<td>SAP, ITGC / ITAC</td>
 </tr>
 <tr class="even">
-<td>Modélisation</td>
-<td>XGBoost, SHAP</td>
-</tr>
-<tr class="odd">
-<td>Métier</td>
-<td>SAP, contrôles ITGC / ITAC</td>
+<td>Langues</td>
+<td>Français (natif) · Anglais (B2+)</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="hors-du-bureau" class="level2 section-title">
-<h2 class="section-title anchored" data-anchor-id="hors-du-bureau">Hors du bureau</h2>
+<section id="hors-du-bureau" class="level2">
+<h2 class="anchored" data-anchor-id="hors-du-bureau">Hors du bureau</h2>
 <p>Cycliste et coureur. J’analyse mes propres données d’entraînement depuis deux ans.</p>
 
 

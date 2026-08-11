@@ -1,68 +1,147 @@
 /*-- scss:defaults --*/
 
-// Fontes (2 familles max)
-$web-font-path: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap";
+// Garde-fou : certains thèmes Bootswatch importent leur propre police via
+// Google Fonts si $web-font-path est défini. On force null — les 3 fichiers
+// IBM Plex sont auto-hébergés, aucune dépendance réseau au runtime.
+$web-font-path: null;
 
-// Palette
-$paper:       #ffffff;
-$paper-dim:   #f4f4f5;   // fonds code inline, tags
-$ink:         #09090b;   // titres, texte fort
-$ink-mid:     #3f3f46;   // corps de texte
-$ink-muted:   #a1a1aa;   // méta, labels, secondaire
-$accent:      #09090b;   // liens, états actifs (monochrome)
-$rule:        #e4e4e7;   // filets, bordures
-$code-bg:     #09090b;   // fond blocs de code
-$code-fg:     #e4e4e7;   // texte dans blocs de code
+// ─── Palette — interface ("Graphite & Ardoise") ──────────────────────────
+// Un seul accent : $accent. Le gris tertiaire est réservé à l'usage
+// graphique/décoratif (contraste ~2,6:1 sur blanc, sous le seuil AA en
+// texte) — toute légende ou note lisible utilise $ink-secondary.
+$paper:         #FFFFFF;
+$paper-alt:     #F8FAFC;
+$ink:           #0F172A;
+$ink-secondary: #475569;
+$ink-tertiary:  #94A3B8;
+$accent:        #0E6F7A;
+$accent-hover:  #0A5A63;
+$rule:          #E2E8F0;
+
+// ─── Palette — graphiques ─────────────────────────────────────────────
+// Séparée de l'accent d'interface. Le gris porte le contexte, la couleur
+// porte le propos — une seule série colorée par graphique par défaut.
+$chart-primary:      #1F4E5F;
+$chart-context:       #94A3B8;
+$chart-context-light: #CBD5E1;
+$chart-favorable:     #1B6E8C;
+$chart-unfavorable:   #C2611C; // remplissages / grands chiffres, jamais texte courant (4,2:1)
+
+// ─── Typographie ────────────────────────────────────────────────────────
+// IBM Plex Sans (400, 600) + IBM Plex Mono (400), auto-hébergées.
+$font-family-sans-serif: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-monospace:  "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+$headings-font-family:   $font-family-sans-serif;
+$headings-font-weight:   600;
 
 // Échelle typographique — ratio 1.25 (Major Third)
-$scale-xs:    0.64rem;   // labels uppercase
-$scale-sm:    0.8rem;    // méta, tags, small
-$scale-base:  1rem;      // corps
-$scale-lg:    1.25rem;   // h3
-$scale-xl:    1.563rem;  // —
-$scale-2xl:   1.953rem;  // h1
+$scale-xs:   0.64rem;  // labels uppercase
+$scale-sm:   0.8rem;   // méta, légendes, small
+$scale-base: 1rem;     // corps
+$scale-lg:   1.25rem;  // h3
+$scale-xl:   1.563rem; // —
+$scale-2xl:  1.953rem; // h1
 
 // Unité d'espacement
 $sp: 1.5rem;
 
-// Rayon de bordure unique
+// Rayon de bordure unique — zéro, rien d'arrondi
 $radius: 0px;
 
-// Mapping Bootstrap / Quarto
-$font-family-sans-serif:  "Inter", system-ui, -apple-system, sans-serif;
-$headings-font-family:    "Inter", system-ui, -apple-system, sans-serif;
-$font-family-monospace:   "JetBrains Mono", monospace;
+// ─── Mapping Bootstrap / Quarto ─────────────────────────────────────────
+$body-bg:           $paper;
+$body-color:        $ink;
+$primary:           $accent;
+$link-color:        $accent;
+$link-hover-color:  $accent-hover;
+$link-decoration:   none;
 
-$body-bg:                 $paper;
-$body-color:              $ink-mid;
-$headings-color:          $ink;
-$link-color:              $accent;
-$link-hover-color:        $ink;
-$link-decoration:         none;
+$headings-color: $ink;
 
-$font-size-base:          $scale-base;
-$line-height-base:        1.72;
+$navbar-bg: $paper;
+$navbar-fg: $ink-secondary;
+$navbar-hl: $ink;
 
-$h1-font-size:            $scale-2xl;
-$h2-font-size:            $scale-sm;
-$h3-font-size:            $scale-base;
-$h4-font-size:            $scale-base;
+$footer-bg: $paper;
 
-$headings-font-weight:    600;
-$headings-line-height:    1.15;
+$font-size-base:   $scale-base;
+$line-height-base: 1.65;
 
-$border-color:            $rule;
-$border-radius:           $radius;
-$border-radius-sm:        $radius;
-$border-radius-lg:        $radius;
-$border-radius-xl:        $radius;
-$border-radius-xxl:       $radius;
+$h1-font-size: $scale-2xl;
+$h2-font-size: $scale-sm;
+$h3-font-size: $scale-base;
+$h4-font-size: $scale-base;
 
-$code-color:              $ink;
-$pre-color:               $code-fg;
+$border-color:      $rule;
+$border-radius:     $radius;
+$border-radius-sm:  $radius;
+$border-radius-lg:  $radius;
+$border-radius-xl:  $radius;
+$border-radius-xxl: $radius;
+
+$code-bg:    $paper-alt;
+$code-color: $ink;
+$pre-color:  $ink;
 
 
 /*-- scss:rules --*/
+
+// ─── Polices auto-hébergées ───────────────────────────────────────────
+// Trois fichiers, aucune dépendance réseau à l'exécution.
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/ibm-plex-sans-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/fonts/ibm-plex-sans-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/ibm-plex-mono-400.woff2") format("woff2");
+}
+
+// ─── Jetons exposés en custom properties ───────────────────────────────
+// Même système que côté Evidence (evidence/evidence.config.yaml) — une
+// seule source de vérité pour les deux surfaces.
+:root {
+  --color-paper: #{$paper};
+  --color-paper-alt: #{$paper-alt};
+  --color-ink: #{$ink};
+  --color-ink-secondary: #{$ink-secondary};
+  --color-ink-tertiary: #{$ink-tertiary};
+  --color-accent: #{$accent};
+  --color-accent-hover: #{$accent-hover};
+  --color-rule: #{$rule};
+
+  --chart-primary: #{$chart-primary};
+  --chart-context: #{$chart-context};
+  --chart-context-light: #{$chart-context-light};
+  --chart-favorable: #{$chart-favorable};
+  --chart-unfavorable: #{$chart-unfavorable};
+
+  --font-sans: #{$font-family-sans-serif};
+  --font-mono: #{$font-family-monospace};
+
+  --space-unit: #{$sp};
+  --radius: #{$radius};
+  --motion-duration: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-duration: 0s; }
+}
 
 // ---- Base
 body {
@@ -70,42 +149,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-// ---- Sidebar gauche
-#quarto-sidebar {
-  background: $paper-dim;
-  border-right: 1px solid $rule;
+// ---- Navbar
+.navbar {
+  padding-top: calc($sp * 0.6);
+  padding-bottom: calc($sp * 0.6);
 }
 
-.sidebar-title {
-  display: block;
-  font-size: $scale-base;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: $ink;
-  padding: ($sp * 1.15) $sp ($sp * 0.85);
-  border-bottom: 1px solid $rule;
-  margin-bottom: calc($sp / 2);
-}
-
-.sidebar-item-text.sidebar-link {
+.navbar-brand {
   font-size: $scale-sm;
-  font-weight: 400;
-  color: $ink-muted;
-  padding: 0.4rem $sp;
-  display: block;
-  text-decoration: none;
-  border-left: 2px solid transparent;
-  transition: color 0.12s;
-}
-
-.sidebar-item-text.sidebar-link:hover {
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: $ink;
 }
 
-.sidebar-item-text.sidebar-link.active {
+.navbar .nav-link {
+  font-size: $scale-sm;
+  color: $ink-secondary;
+  padding-left: calc($sp * 0.65);
+  padding-right: calc($sp * 0.65);
+  transition: color var(--motion-duration);
+}
+
+.navbar .nav-link:hover {
   color: $ink;
-  font-weight: 500;
-  border-left-color: $ink;
+}
+
+.navbar .nav-link.active {
+  color: $ink;
+  font-weight: 600;
 }
 
 // ---- TOC droite
@@ -115,11 +186,12 @@ body {
 
 nav#TOC > h2,
 div#quarto-margin-sidebar h2#toc-title {
-  font-size: $scale-xs;  // délibérément plus petit — c'est un label de navigation
-  font-weight: 600;
+  font-family: $font-family-monospace;
+  font-size: $scale-xs;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: $ink-muted;
+  color: $ink-secondary;
   margin: 0 0 calc($sp / 2);
   border: none;
   padding: 0;
@@ -131,19 +203,19 @@ nav#TOC ul {
 }
 
 nav#TOC .nav-link {
-  font-size: 0.75rem;
-  color: $ink-muted;
+  font-size: $scale-sm;
+  color: $ink-secondary;
   padding: 0.2rem 0;
   display: block;
   text-decoration: none;
   border: none;
   line-height: 1.5;
-  transition: color 0.12s;
+  transition: color var(--motion-duration);
 }
 
 nav#TOC .nav-link:hover,
 nav#TOC .nav-link.active {
-  color: $ink;
+  color: $accent;
 }
 
 // ---- Contenu
@@ -155,19 +227,20 @@ main.content {
 // ---- Titres
 h1, .quarto-title h1.title {
   font-size: $scale-2xl;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
   color: $ink;
   margin-bottom: calc($sp / 4);
 }
 
 h2 {
+  font-family: $font-family-monospace;
   font-size: $scale-sm;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: $ink-muted;
+  color: $ink-secondary;
   margin-top: calc($sp * 2);
   margin-bottom: calc($sp * 0.65);
   border: none;
@@ -177,7 +250,7 @@ h3 {
   font-size: $scale-base;
   font-weight: 600;
   color: $ink;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   margin-top: calc($sp * 1.15);
   margin-bottom: calc($sp / 6);
 }
@@ -188,7 +261,7 @@ p.subtitle.lead,
 .hero .subtitle p {
   font-size: $scale-sm;
   font-weight: 400;
-  color: $ink-muted;
+  color: $ink-secondary;
   line-height: 1.5;
   margin-bottom: 0;
 }
@@ -196,8 +269,8 @@ p.subtitle.lead,
 // ---- Corps
 p {
   font-size: $scale-base;
-  color: $ink-mid;
-  line-height: 1.72;
+  color: $ink;
+  line-height: 1.65;
   margin-bottom: calc($sp * 0.6);
   max-width: 68ch;
 }
@@ -206,17 +279,24 @@ a {
   color: $accent;
   text-decoration: none;
   border-bottom: 1px solid $rule;
-  transition: border-color 0.12s, color 0.12s;
+  transition: border-color var(--motion-duration), color var(--motion-duration);
 }
 
 a:hover {
-  color: $ink;
-  border-bottom-color: $ink;
+  color: $accent-hover;
+  border-bottom-color: $accent-hover;
 }
 
 strong {
   font-weight: 600;
   color: $ink;
+}
+
+// ---- Chiffres — alignement tabulaire
+table,
+.kpi,
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
 // ---- Hero
@@ -231,14 +311,14 @@ strong {
 }
 
 .hero p {
-  color: $ink-mid;
+  color: $ink;
 }
 
 .tools {
   display: block;
   font-family: $font-family-monospace;
   font-size: $scale-sm;
-  color: $ink-muted;
+  color: $ink-secondary;
   letter-spacing: 0.01em;
   margin-top: calc($sp / -8);
   margin-bottom: 0;
@@ -252,27 +332,27 @@ strong {
 
 .cta-links a {
   font-size: $scale-sm;
-  font-weight: 500;
-  color: $ink-mid;
+  font-weight: 600;
+  color: $ink;
   border-bottom: 1px solid $rule;
   padding-bottom: 1px;
-  transition: color 0.12s, border-color 0.12s;
+  transition: color var(--motion-duration), border-color var(--motion-duration);
 }
 
 .cta-links a:hover {
-  color: $ink;
-  border-bottom-color: $ink;
+  color: $accent;
+  border-bottom-color: $accent;
 }
 
 // ---- Parcours : meta
 .travail-meta {
   font-size: $scale-sm;
-  color: $ink-muted;
+  color: $ink-secondary;
   margin-top: calc($sp / -7);
   margin-bottom: calc($sp * 0.6);
 }
 
-// ---- Tableaux
+// ---- Tableaux (contenu courant — texte narratif)
 table {
   font-size: $scale-sm * 1.07;
   border-collapse: collapse;
@@ -284,12 +364,13 @@ table td {
   padding: calc($sp / 3.75) 0;
   border: none;
   vertical-align: top;
-  color: $ink-mid;
+  color: $ink;
 }
 
 table td:first-child {
+  font-family: $font-family-monospace;
   font-size: $scale-sm;
-  color: $ink-muted;
+  color: $ink-secondary;
   padding-right: calc($sp * 1.35);
   min-width: 120px;
   white-space: nowrap;
@@ -309,14 +390,17 @@ table td:first-child {
 
 .projet-card h3 a {
   color: $ink;
-  border-bottom: none;
+  border-bottom: 1px solid $rule;
 }
 
-.projet-card h3 a:hover { color: $ink-muted; }
+.projet-card h3 a:hover {
+  color: $accent;
+  border-bottom-color: $accent;
+}
 
 .projet-card p {
   font-size: $scale-sm * 1.07;
-  color: $ink-muted;
+  color: $ink-secondary;
   margin-bottom: calc($sp / 2);
 }
 
@@ -330,8 +414,8 @@ table td:first-child {
 .tag {
   font-family: $font-family-monospace;
   font-size: $scale-xs * 1.07;
-  color: $ink-muted;
-  background: $paper-dim;
+  color: $ink-secondary;
+  background: $paper-alt;
   padding: calc($sp / 10) calc($sp / 3);
 }
 
@@ -346,7 +430,7 @@ table td:first-child {
 // ---- Code inline
 p code, li code {
   font-family: $font-family-monospace;
-  background: $paper-dim;
+  background: $paper-alt;
   padding: 0.1em 0.4em;
   font-size: 0.82em;
   color: $ink;
@@ -354,12 +438,13 @@ p code, li code {
 
 // ---- Bloc de code
 pre {
-  background: $code-bg;
+  background: $paper-alt;
+  border: 1px solid $rule;
   padding: $sp calc($sp * 1.15);
   font-size: $scale-sm;
   line-height: 1.7;
   overflow-x: auto;
-  color: $code-fg;
+  color: $ink;
   margin-bottom: $sp;
 }
 
@@ -379,3 +464,11 @@ hr {
   border-top: 1px solid $rule;
   margin: $sp 0;
 }
+
+// ---- Accessibilité
+*:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 2px;
+}
+
+@import "components";

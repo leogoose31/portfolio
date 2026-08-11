@@ -1,0 +1,151 @@
+// Partial importé par custom.scss (scss:rules). Composants réutilisables
+// sur toute page : eyebrow, bloc KPI, tableau financier, note méthodologique.
+
+// ─── Eyebrow ────────────────────────────────────────────────────────────
+.eyebrow {
+  display: inline-block;
+  font-family: $font-family-monospace;
+  font-size: $scale-xs;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: $ink-secondary;
+}
+
+.eyebrow--accent {
+  color: $accent;
+}
+
+// ─── Bloc KPI ───────────────────────────────────────────────────────────
+// La couleur favorable/défavorable n'est utilisée ici QUE parce que
+// .kpi-value est un grand chiffre (le brief réserve $chart-unfavorable,
+// 4,2:1 sur blanc, aux remplissages et aux grands chiffres — jamais au
+// texte courant). Le label reste en $ink-secondary, toujours conforme AA.
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: calc($sp / 6);
+  margin-bottom: $sp;
+
+  p {
+    margin-bottom: 0;
+    max-width: none;
+  }
+}
+
+.kpi-value {
+  font-variant-numeric: tabular-nums;
+  font-size: $scale-2xl;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: $ink;
+}
+
+.kpi-value--favorable { color: $chart-favorable; }
+.kpi-value--unfavorable { color: $chart-unfavorable; }
+
+.kpi-label {
+  font-family: $font-family-monospace;
+  font-size: $scale-xs;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $ink-secondary;
+}
+
+// ─── Écart favorable / défavorable (usage en ligne, texte courant) ──────
+// Le texte reste en $ink (AA garanti) ; la couleur n'est qu'un renfort
+// décoratif porté par un repère non-textuel, jamais par la couleur seule
+// — le signe +/− est l'information, toujours présent.
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-variant-numeric: tabular-nums;
+  color: $ink;
+}
+
+.delta::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  flex: none;
+}
+
+.delta--favorable::before { background: $chart-favorable; }
+.delta--unfavorable::before { background: $chart-unfavorable; }
+
+// ─── Tableau financier ──────────────────────────────────────────────────
+// Défilement horizontal contenu plutôt que compression des colonnes :
+// un chiffre financier ne doit jamais être tronqué ou masqué. Le
+// wrapper est un div Quarto natif (::: {.table-financial-wrap}), pas du
+// HTML brut dans le contenu.
+.table-financial-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: $sp;
+  border-bottom: 1px solid $rule;
+
+  table {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+    font-size: $scale-sm;
+    margin-bottom: 0;
+  }
+
+  th {
+    font-family: $font-family-monospace;
+    font-size: $scale-xs;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $ink-secondary;
+    text-align: right;
+    white-space: nowrap;
+    padding: calc($sp / 3) calc($sp / 2);
+    border-bottom: 1px solid $ink;
+  }
+
+  td {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: $ink;
+    padding: calc($sp / 3) calc($sp / 2);
+    border-bottom: 1px solid $rule;
+  }
+
+  th:first-child,
+  td:first-child {
+    text-align: left;
+    font-variant-numeric: normal;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 1px solid $ink;
+  }
+}
+
+// ─── Note méthodologique ──────────────────────────────────────────────
+.note-methodo {
+  background: $paper-alt;
+  border-top: 1px solid $rule;
+  border-bottom: 1px solid $rule;
+  padding: calc($sp * 0.9) calc($sp * 1.1);
+  margin: calc($sp * 1.5) 0;
+
+  p {
+    font-size: $scale-sm;
+    color: $ink-secondary;
+    max-width: none;
+    margin-bottom: calc($sp / 3);
+  }
+
+  p:last-child { margin-bottom: 0; }
+}
+
+.note-methodo-label {
+  margin-bottom: calc($sp / 3);
+}

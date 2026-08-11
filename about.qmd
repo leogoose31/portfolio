@@ -1,47 +1,68 @@
 ---
 title: "Parcours"
+toc: true
+toc-location: right
 ---
 
-## Profil {.section-title}
+## Profil
 
-Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022.
-Mémorialiste DEC, titulaire du DSCG.
+5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars.
+Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).
 
-Profil à l'intersection de l'audit financier et de l'analyse de données :
-maîtrise des référentiels comptables et des processus business,
-complétée par des compétences en SQL, dbt et Python appliquées
-à des problématiques de contrôle et de reporting.
+Profil à l'intersection de la finance et de la donnée : maîtrise des référentiels comptables,
+des processus business et des contrôles internes, complétée par des compétences en SQL, dbt
+et Python appliquées à des problématiques d'audit et de reporting.
 
-## Expérience {.section-title}
+## Expérience
 
-### Forvis Mazars — Auditeur financier senior
+### Forvis Mazars — Auditeur senior & Data Analytics
 ::: {.travail-meta}
-Toulouse · depuis 2022
+Toulouse · depuis septembre 2025
 :::
 
-Audit légal et contractuel. Gestion d'audit de groupe sous ISA 600R, audit
-des systèmes d'information (ITGC / ITAC sous SAP), automatisation
-de procédures sur le cycle Achats-Fournisseurs.
+Supervision d'une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification,
+revue des travaux, gestion des livrables. Déploiement d'outils Data Analytics (Alteryx, SQL,
+Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de
+plus d'un milliard d'euros. Audit combiné financier et SI, coordination internationale sur
+15 pays.
 
-## Formation et titres {.section-title}
+### Forvis Mazars — Auditeur financier & SI
+::: {.travail-meta}
+Toulouse · novembre 2023 — août 2025
+:::
+
+Audit des contrôles financiers et des systèmes d'information (ITGC/ITAC) sous SAP et autres
+ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de
+données de plus d'un million d'écritures pour la détection d'anomalies et la validation des
+assertions financières.
+
+### Orcom — Apprenti comptable
+::: {.travail-meta}
+Toulouse · septembre 2021 — octobre 2023
+:::
+
+Gestion d'un portefeuille clients multi-secteurs : préparation des états financiers,
+accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de
+saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par
+machine learning.
+
+## Formation
 
 | | |
 |---|---|
-| DEC | Mémoire en cours — analyse prédictive d'activité appliquée au commerce de proximité |
-| DSCG | Mémoire sur la modélisation prédictive appliquée aux prévisions comptables |
-| Certification | Analytics Engineer |
+| DEC | Mémorialiste — en cours · Ordre des Experts-Comptables, Toulouse |
+| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git |
+| DSCG | Institut Limayrac · Toulouse · 2023 |
 
-## Compétences techniques {.section-title}
+## Compétences
 
 | | |
 |---|---|
-| Interrogation | SQL, BigQuery |
-| Transformation | dbt, Alteryx, Python |
-| Restitution | Power BI |
-| Modélisation | XGBoost, SHAP |
-| Métier | SAP, contrôles ITGC / ITAC |
+| Finance | Reporting financier, P&L, contrôle interne, consolidation, IFRS |
+| Données | SQL, Python, dbt, BigQuery, Alteryx, Power BI |
+| Systèmes | SAP, ITGC / ITAC |
+| Langues | Français (natif) · Anglais (B2+) |
 
-## Hors du bureau {.section-title}
+## Hors du bureau
 
-Cycliste et coureur. J'analyse mes propres données d'entraînement depuis
-deux ans.
+Cycliste et coureur. J'analyse mes propres données d'entraînement depuis deux ans.

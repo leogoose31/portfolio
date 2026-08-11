@@ -1,0 +1,59 @@
+---
+title: "Composants — page de validation"
+subtitle: "Page interne, non liée dans la navigation. Rendu des composants du système Graphite & Ardoise avec le contenu réel du projet Contoso."
+search: false
+---
+
+::: {.eyebrow}
+Contoso Retail · Décomposition de marge
+:::
+
+## Bloc KPI
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.kpi}
+[41 %]{.kpi-value}
+
+[Marge nette — canal Online]{.kpi-label}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.kpi}
+[+10 pts]{.kpi-value .kpi-value--favorable}
+
+[Écart de marge nette, Online vs Retail]{.kpi-label}
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.kpi}
+[−9 pts]{.kpi-value .kpi-value--unfavorable}
+
+[Écart de marge nette, Retail vs Distribution]{.kpi-label}
+:::
+:::
+
+:::
+
+L'écart entre Retail et Distribution est [presque entièrement expliqué par les coûts de stockage]{.delta .delta--unfavorable}, une fois la marge brute ramenée à la marge nette.
+
+## Tableau financier
+
+::: {.table-financial-wrap tabindex="0"}
+| Canal        | Marge brute | Marge nette | Écart brut → net |
+|---|---|---|---|
+| Online       | 44 %        | 41 %        | 3 pts             |
+| Retail       | 38 %        | 31 %        | 7 pts             |
+| Distribution | 29 %        | 22 %        | 7 pts             |
+:::
+
+## Note méthodologique
+
+::: {.note-methodo}
+[Limites]{.eyebrow .note-methodo-label}
+
+Le choix de la clé d'allocation des coûts logistiques (poids net des commandes) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes.
+:::

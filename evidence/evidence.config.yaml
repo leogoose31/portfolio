@@ -1,0 +1,72 @@
+# Thème "Graphite & Ardoise" — mêmes jetons que custom.scss (portfolio Quarto).
+# Schéma vérifié sur evidence-dev/template et evidence-dev/themes (GitHub, 2026-08).
+# Pas de dark mode : appearance.switcher désactivé, seules les valeurs light comptent
+# (dupliquées en dark pour rester conforme au schéma des thèmes officiels).
+
+appearance:
+  default: light
+  switcher: false
+
+theme:
+  colors:
+    # Un seul accent d'interface. Evidence attend deux clés (primary/accent) ;
+    # le brief n'en définit qu'une — les deux pointent donc vers #0E6F7A plutôt
+    # que d'inventer une deuxième couleur.
+    primary:
+      light: "#0E6F7A"
+      dark: "#0E6F7A"
+    accent:
+      light: "#0E6F7A"
+      dark: "#0E6F7A"
+    base:
+      light: "#FFFFFF"
+      dark: "#FFFFFF"
+    info:
+      light: "#0E6F7A"
+      dark: "#0E6F7A"
+    # Favorable / défavorable en teal / orange, jamais vert / rouge.
+    positive:
+      light: "#1B6E8C"
+      dark: "#1B6E8C"
+    negative:
+      light: "#C2611C"
+      dark: "#C2611C"
+    # Pas de couleur "avertissement" définie dans le brief : réutilise
+    # l'écart défavorable plutôt que d'inventer une 6e couleur.
+    warning:
+      light: "#C2611C"
+      dark: "#C2611C"
+
+  # Palette catégorielle des graphiques — séparée de l'accent d'interface.
+  # Le gris porte le contexte, la couleur porte le propos.
+  colorPalettes:
+    default:
+      light:
+        - "#1F4E5F" # Série principale
+        - "#94A3B8" # Contexte
+        - "#CBD5E1" # Contexte clair
+        - "#1B6E8C" # Écart favorable
+        - "#C2611C" # Écart défavorable
+      dark:
+        - "#1F4E5F"
+        - "#94A3B8"
+        - "#CBD5E1"
+        - "#1B6E8C"
+        - "#C2611C"
+
+  # Échelle continue (heatmaps, etc.) : de neutre clair à la série principale.
+  colorScales:
+    default:
+      light:
+        - "#CBD5E1"
+        - "#1F4E5F"
+      dark:
+        - "#CBD5E1"
+        - "#1F4E5F"
+
+plugins:
+  components:
+    "@evidence-dev/core-components": {}
+  datasources:
+    "@evidence-dev/duckdb": {}
+    "@evidence-dev/csv": {}
