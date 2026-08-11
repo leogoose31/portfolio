@@ -18,35 +18,35 @@
     "href": "about.html",
     "title": "Parcours",
     "section": "",
-    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
+    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nProfil à l’intersection de la finance et de la donnée : maîtrise des référentiels comptables, des processus business et des contrôles internes, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques d’audit et de reporting."
   },
   {
     "objectID": "about.html#profil",
     "href": "about.html#profil",
     "title": "Parcours",
     "section": "",
-    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
+    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nProfil à l’intersection de la finance et de la donnée : maîtrise des référentiels comptables, des processus business et des contrôles internes, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques d’audit et de reporting."
   },
   {
     "objectID": "about.html#expérience",
     "href": "about.html#expérience",
     "title": "Parcours",
     "section": "Expérience",
-    "text": "Expérience\n\nForvis Mazars — Auditeur financier senior\n\nToulouse · depuis 2022\n\nAudit légal et contractuel. Gestion d’audit de groupe sous ISA 600R, audit des systèmes d’information (ITGC / ITAC sous SAP), automatisation de procédures sur le cycle Achats-Fournisseurs."
+    "text": "Expérience\n\nForvis Mazars — Auditeur senior & Data Analytics\n\nToulouse · depuis septembre 2025\n\nSupervision d’une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification, revue des travaux, gestion des livrables. Déploiement d’outils Data Analytics (Alteryx, SQL, Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de plus d’un milliard d’euros. Audit combiné financier et SI, coordination internationale sur 15 pays.\n\n\nForvis Mazars — Auditeur financier & SI\n\nToulouse · novembre 2023 — août 2025\n\nAudit des contrôles financiers et des systèmes d’information (ITGC/ITAC) sous SAP et autres ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de données de plus d’un million d’écritures pour la détection d’anomalies et la validation des assertions financières.\n\n\nOrcom — Apprenti comptable\n\nToulouse · septembre 2021 — octobre 2023\n\nGestion d’un portefeuille clients multi-secteurs : préparation des états financiers, accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par machine learning."
   },
   {
-    "objectID": "about.html#formation-et-titres",
-    "href": "about.html#formation-et-titres",
+    "objectID": "about.html#formation",
+    "href": "about.html#formation",
     "title": "Parcours",
-    "section": "Formation et titres",
-    "text": "Formation et titres\n\n\n\n\n\n\n\nDEC\nMémoire en cours — analyse prédictive d’activité appliquée au commerce de proximité\n\n\nDSCG\nMémoire sur la modélisation prédictive appliquée aux prévisions comptables\n\n\nCertification\nAnalytics Engineer"
+    "section": "Formation",
+    "text": "Formation\n\n\n\n\n\n\n\nDEC\nMémorialiste — en cours · Ordre des Experts-Comptables, Toulouse\n\n\nAnalytics Engineer\nDataBird · 2025 — BigQuery, dbt, Fivetran, Git\n\n\nDSCG\nInstitut Limayrac · Toulouse · 2023"
   },
   {
-    "objectID": "about.html#compétences-techniques",
-    "href": "about.html#compétences-techniques",
+    "objectID": "about.html#compétences",
+    "href": "about.html#compétences",
     "title": "Parcours",
-    "section": "Compétences techniques",
-    "text": "Compétences techniques\n\n\n\nInterrogation\nSQL, BigQuery\n\n\nTransformation\ndbt, Alteryx, Python\n\n\nRestitution\nPower BI\n\n\nModélisation\nXGBoost, SHAP\n\n\nMétier\nSAP, contrôles ITGC / ITAC"
+    "section": "Compétences",
+    "text": "Compétences\n\n\n\n\n\n\n\nFinance\nReporting financier, P&L, contrôle interne, consolidation, IFRS\n\n\nDonnées\nSQL, Python, dbt, BigQuery, Alteryx, Power BI\n\n\nSystèmes\nSAP, ITGC / ITAC\n\n\nLangues\nFrançais (natif) · Anglais (B2+)"
   },
   {
     "objectID": "about.html#hors-du-bureau",
