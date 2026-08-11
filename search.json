@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Léo Gouzy",
+    "section": "",
+    "text": "Léo Gouzy\n\nAudit financier · Data analytics · Toulouse\n\nAuditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nÀ l’intersection de la comptabilité et de l’analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l’audit manuel ne couvre pas.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html",
+    "href": "projets/contoso-marges/index.html",
+    "title": "Analyse de marges — Contoso",
+    "section": "",
+    "text": "SQL · dbt · BigQuery · Power BI"
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html#contexte",
+    "href": "projets/contoso-marges/index.html#contexte",
+    "title": "Analyse de marges — Contoso",
+    "section": "Contexte",
+    "text": "Contexte\nLe jeu de données Contoso (Microsoft) simule les ventes, achats et stocks d’un distributeur mondial. Il est suffisamment riche pour reproduire les problèmes réels d’une clôture analytique : ventilation des coûts indirects, réconciliation des volumes vendus et des marges unitaires, comparaison interentités.\nCe projet ne cherche pas à démontrer une maîtrise du dataset — il cherche à poser les mêmes questions qu’on se poserait en mission."
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html#problématique",
+    "href": "projets/contoso-marges/index.html#problématique",
+    "title": "Analyse de marges — Contoso",
+    "section": "Problématique",
+    "text": "Problématique\n\nQuelle est la marge réelle par canal de distribution, une fois les coûts logistiques correctement alloués ?\n\nLa question semble simple. En pratique, elle suppose de :\n\nreconstruire un P&L cohérent depuis des tables de faits brutes,\nchoisir une clé de répartition défendable pour les coûts indirects,\nidentifier les anomalies avant de commenter les résultats."
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html#architecture",
+    "href": "projets/contoso-marges/index.html#architecture",
+    "title": "Analyse de marges — Contoso",
+    "section": "Architecture",
+    "text": "Architecture\nBigQuery (raw)\n    └── dbt (staging → marts)\n            ├── mart_ventes         -- CA net par canal / produit / période\n            ├── mart_couts          -- COGS + coûts logistiques alloués\n            └── mart_pnl            -- P&L par axe avec comparatif N-1\nLe modèle dbt impose une séparation nette entre les transformations de nettoyage (staging) et les agrégations métier (marts). Les tests de cohérence (somme des marges = marge totale, pas de ligne orpheline) sont déclarés dans schema.yml."
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html#résultats-clés",
+    "href": "projets/contoso-marges/index.html#résultats-clés",
+    "title": "Analyse de marges — Contoso",
+    "section": "Résultats clés",
+    "text": "Résultats clés\n\n\n\nCanal\nMarge brute\nMarge nette après alloc.\n\n\n\n\nRetail\n38 %\n31 %\n\n\nOnline\n44 %\n41 %\n\n\nDistribution\n29 %\n22 %\n\n\n\nLe canal en ligne apparaît plus rentable que le retail une fois les coûts de stockage alloués — ce que le reporting initial (marge brute seule) ne montrait pas."
+  },
+  {
+    "objectID": "projets/contoso-marges/index.html#ce-que-ce-projet-ma-appris",
+    "href": "projets/contoso-marges/index.html#ce-que-ce-projet-ma-appris",
+    "title": "Analyse de marges — Contoso",
+    "section": "Ce que ce projet m’a appris",
+    "text": "Ce que ce projet m’a appris\nLa difficulté n’est pas technique. Elle est dans le choix des hypothèses d’allocation et dans leur documentation : un analyste qui reprend le modèle six mois plus tard doit comprendre pourquoi la clé de répartition est le poids net et pas le nombre de commandes.\nC’est exactement le problème qu’on rencontre en audit quand on évalue la robustesse d’un reporting de gestion."
+  },
+  {
+    "objectID": "projets/index.html",
+    "href": "projets/index.html",
+    "title": "Projets",
+    "section": "",
+    "text": "Analyse de marges sur données Contoso\nReconstruction d’un P&L par axe d’analyse (produit, canal, région) à partir du jeu de données public Contoso. Mise en évidence des drivers de marge à l’aide de SQL, dbt et Power BI.\n\nSQL dbt BigQuery Power BI"
+  },
+  {
+    "objectID": "parcours.html",
+    "href": "parcours.html",
+    "title": "Parcours",
+    "section": "",
+    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
+  },
+  {
+    "objectID": "parcours.html#profil",
+    "href": "parcours.html#profil",
+    "title": "Parcours",
+    "section": "",
+    "text": "Auditeur financier senior & Data Analyst chez Forvis Mazars à Toulouse depuis 2022. Mémorialiste DEC, titulaire du DSCG.\nProfil à l’intersection de l’audit financier et de l’analyse de données : maîtrise des référentiels comptables et des processus business, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques de contrôle et de reporting."
+  },
+  {
+    "objectID": "parcours.html#expérience",
+    "href": "parcours.html#expérience",
+    "title": "Parcours",
+    "section": "Expérience",
+    "text": "Expérience\n\nForvis Mazars — Auditeur financier senior\n\nToulouse · depuis 2022\n\nAudit légal et contractuel. Gestion d’audit de groupe sous ISA 600R, audit des systèmes d’information (ITGC / ITAC sous SAP), automatisation de procédures sur le cycle Achats-Fournisseurs."
+  },
+  {
+    "objectID": "parcours.html#formation-et-titres",
+    "href": "parcours.html#formation-et-titres",
+    "title": "Parcours",
+    "section": "Formation et titres",
+    "text": "Formation et titres\n\n\n\n\n\n\n\nDEC\nMémoire en cours — analyse prédictive d’activité appliquée au commerce de proximité\n\n\nDSCG\nMémoire sur la modélisation prédictive appliquée aux prévisions comptables\n\n\nCertification\nAnalytics Engineer"
+  },
+  {
+    "objectID": "parcours.html#compétences-techniques",
+    "href": "parcours.html#compétences-techniques",
+    "title": "Parcours",
+    "section": "Compétences techniques",
+    "text": "Compétences techniques\n\n\n\nInterrogation\nSQL, BigQuery\n\n\nTransformation\ndbt, Alteryx, Python\n\n\nRestitution\nPower BI\n\n\nModélisation\nXGBoost, SHAP\n\n\nMétier\nSAP, contrôles ITGC / ITAC"
+  },
+  {
+    "objectID": "parcours.html#hors-du-bureau",
+    "href": "parcours.html#hors-du-bureau",
+    "title": "Parcours",
+    "section": "Hors du bureau",
+    "text": "Hors du bureau\nCycliste et coureur. J’analyse mes propres données d’entraînement depuis deux ans."
+  }
+]
