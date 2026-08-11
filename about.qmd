@@ -9,15 +9,15 @@ toc-location: right
 5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars.
 Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).
 
-Profil à l'intersection de la finance et de la donnée : maîtrise des référentiels comptables,
-des processus business et des contrôles internes, complétée par des compétences en SQL, dbt
-et Python appliquées à des problématiques d'audit et de reporting.
+Je maîtrise les référentiels comptables, les processus business et les contrôles internes
+d'un auditeur classique — et j'interroge moi-même les bases qui produisent les chiffres,
+en SQL, dbt et Python, plutôt que de m'arrêter à l'échantillon.
 
 ## Expérience
 
 ### Forvis Mazars — Auditeur senior & Data Analytics
 ::: {.travail-meta}
-Toulouse · depuis septembre 2025
+Toulouse · depuis septembre 2025 — promotion interne
 :::
 
 Supervision d'une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification,
@@ -60,9 +60,11 @@ machine learning.
 |---|---|
 | Finance | Reporting financier, P&L, contrôle interne, consolidation, IFRS |
 | Données | SQL, Python, dbt, BigQuery, Alteryx, Power BI |
-| Systèmes | SAP, ITGC / ITAC |
-| Langues | Français (natif) · Anglais (B2+) |
+
+::: {.travail-meta}
+Systèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)
+:::
 
 ## Hors du bureau
 
-Cycliste et coureur. J'analyse mes propres données d'entraînement depuis deux ans.
+Le même réflexe en dehors du travail : deux ans de données d'entraînement, cyclisme et course à pied, analysées comme n'importe quel autre jeu de données.

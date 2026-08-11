@@ -4,35 +4,35 @@
     "href": "projects/index.html",
     "title": "Projets",
     "section": "",
-    "text": "Où part la marge : décomposition par canal de distribution\nReconstruction d’un P&L analytique depuis des tables brutes. Identification des drivers d’écart entre marge brute et marge nette par canal, sur le jeu de données public Contoso.\n\nSQL dbt BigQuery Power BI"
+    "text": "Où part la marge : décomposition par canal de distribution\nLe canal le plus rentable n’est pas celui qu’on croit une fois les coûts logistiques alloués — la marge brute seule ne le montre pas.\n\nSQL dbt BigQuery Power BI"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Léo Gouzy",
     "section": "",
-    "text": "Léo Gouzy\n\nAudit financier · Data analytics · Toulouse\n\nAuditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nÀ l’intersection de la comptabilité et de l’analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l’audit manuel ne couvre pas.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
+    "text": "Léo Gouzy\n\nAudit financier · Data analytics · Toulouse\n\nAuditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nJe lis un état financier comme un auditeur, et je vais chercher les flux de données qui l’ont produit — pour couvrir des volumes qu’un échantillonnage manuel ne peut pas atteindre.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "Parcours",
     "section": "",
-    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nProfil à l’intersection de la finance et de la donnée : maîtrise des référentiels comptables, des processus business et des contrôles internes, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques d’audit et de reporting."
+    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nJe maîtrise les référentiels comptables, les processus business et les contrôles internes d’un auditeur classique — et j’interroge moi-même les bases qui produisent les chiffres, en SQL, dbt et Python, plutôt que de m’arrêter à l’échantillon."
   },
   {
     "objectID": "about.html#profil",
     "href": "about.html#profil",
     "title": "Parcours",
     "section": "",
-    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nProfil à l’intersection de la finance et de la donnée : maîtrise des référentiels comptables, des processus business et des contrôles internes, complétée par des compétences en SQL, dbt et Python appliquées à des problématiques d’audit et de reporting."
+    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nJe maîtrise les référentiels comptables, les processus business et les contrôles internes d’un auditeur classique — et j’interroge moi-même les bases qui produisent les chiffres, en SQL, dbt et Python, plutôt que de m’arrêter à l’échantillon."
   },
   {
     "objectID": "about.html#expérience",
     "href": "about.html#expérience",
     "title": "Parcours",
     "section": "Expérience",
-    "text": "Expérience\n\nForvis Mazars — Auditeur senior & Data Analytics\n\nToulouse · depuis septembre 2025\n\nSupervision d’une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification, revue des travaux, gestion des livrables. Déploiement d’outils Data Analytics (Alteryx, SQL, Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de plus d’un milliard d’euros. Audit combiné financier et SI, coordination internationale sur 15 pays.\n\n\nForvis Mazars — Auditeur financier & SI\n\nToulouse · novembre 2023 — août 2025\n\nAudit des contrôles financiers et des systèmes d’information (ITGC/ITAC) sous SAP et autres ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de données de plus d’un million d’écritures pour la détection d’anomalies et la validation des assertions financières.\n\n\nOrcom — Apprenti comptable\n\nToulouse · septembre 2021 — octobre 2023\n\nGestion d’un portefeuille clients multi-secteurs : préparation des états financiers, accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par machine learning."
+    "text": "Expérience\n\nForvis Mazars — Auditeur senior & Data Analytics\n\nToulouse · depuis septembre 2025 — promotion interne\n\nSupervision d’une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification, revue des travaux, gestion des livrables. Déploiement d’outils Data Analytics (Alteryx, SQL, Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de plus d’un milliard d’euros. Audit combiné financier et SI, coordination internationale sur 15 pays.\n\n\nForvis Mazars — Auditeur financier & SI\n\nToulouse · novembre 2023 — août 2025\n\nAudit des contrôles financiers et des systèmes d’information (ITGC/ITAC) sous SAP et autres ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de données de plus d’un million d’écritures pour la détection d’anomalies et la validation des assertions financières.\n\n\nOrcom — Apprenti comptable\n\nToulouse · septembre 2021 — octobre 2023\n\nGestion d’un portefeuille clients multi-secteurs : préparation des états financiers, accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par machine learning."
   },
   {
     "objectID": "about.html#formation",
@@ -46,14 +46,14 @@
     "href": "about.html#compétences",
     "title": "Parcours",
     "section": "Compétences",
-    "text": "Compétences\n\n\n\n\n\n\n\nFinance\nReporting financier, P&L, contrôle interne, consolidation, IFRS\n\n\nDonnées\nSQL, Python, dbt, BigQuery, Alteryx, Power BI\n\n\nSystèmes\nSAP, ITGC / ITAC\n\n\nLangues\nFrançais (natif) · Anglais (B2+)"
+    "text": "Compétences\n\n\n\n\n\n\n\nFinance\nReporting financier, P&L, contrôle interne, consolidation, IFRS\n\n\nDonnées\nSQL, Python, dbt, BigQuery, Alteryx, Power BI\n\n\n\n\nSystèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)"
   },
   {
     "objectID": "about.html#hors-du-bureau",
     "href": "about.html#hors-du-bureau",
     "title": "Parcours",
     "section": "Hors du bureau",
-    "text": "Hors du bureau\nCycliste et coureur. J’analyse mes propres données d’entraînement depuis deux ans."
+    "text": "Hors du bureau\nLe même réflexe en dehors du travail : deux ans de données d’entraînement, cyclisme et course à pied, analysées comme n’importe quel autre jeu de données."
   },
   {
     "objectID": "projects/contoso-marges/index.html",

@@ -11,7 +11,7 @@ Audit financier · Data analytics · Toulouse
 
 Auditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.
 
-À l'intersection de la comptabilité et de l'analyse de données : lecture des états financiers, maîtrise des flux de données sous-jacents, capacité à travailler sur des volumes que l'audit manuel ne couvre pas.
+Je lis un état financier comme un auditeur, et je vais chercher les flux de données qui l'ont produit — pour couvrir des volumes qu'un échantillonnage manuel ne peut pas atteindre.
 
 [SQL · dbt · Python · Power BI]{.tools}
 
