@@ -18,14 +18,14 @@
     "href": "about.html",
     "title": "Parcours",
     "section": "",
-    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nJe maîtrise les référentiels comptables, les processus business et les contrôles internes d’un auditeur classique — et j’interroge moi-même les bases qui produisent les chiffres, en SQL, dbt et Python, plutôt que de m’arrêter à l’échantillon."
+    "text": "Français\n  English"
   },
   {
     "objectID": "about.html#profil",
     "href": "about.html#profil",
     "title": "Parcours",
-    "section": "",
-    "text": "5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nJe maîtrise les référentiels comptables, les processus business et les contrôles internes d’un auditeur classique — et j’interroge moi-même les bases qui produisent les chiffres, en SQL, dbt et Python, plutôt que de m’arrêter à l’échantillon."
+    "section": "Profil",
+    "text": "Profil\n5 ans en comptabilité et audit, dont 3 ans en audit financier et SI chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).\nJe maîtrise les référentiels comptables, les processus business et les contrôles internes d’un auditeur classique — et j’interroge moi-même les bases qui produisent les chiffres, en SQL, dbt et Python, plutôt que de m’arrêter à l’échantillon."
   },
   {
     "objectID": "about.html#expérience",
@@ -35,18 +35,25 @@
     "text": "Expérience\n\nForvis Mazars — Auditeur senior & Data Analytics\n\nToulouse · depuis septembre 2025 — promotion interne\n\nSupervision d’une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification, revue des travaux, gestion des livrables. Déploiement d’outils Data Analytics (Alteryx, SQL, Power BI) pour automatiser les contrôles du cycle Achats-Fournisseurs sur un portefeuille de plus d’un milliard d’euros. Audit combiné financier et SI, coordination internationale sur 15 pays.\n\n\nForvis Mazars — Auditeur financier & SI\n\nToulouse · novembre 2023 — août 2025\n\nAudit des contrôles financiers et des systèmes d’information (ITGC/ITAC) sous SAP et autres ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de données de plus d’un million d’écritures pour la détection d’anomalies et la validation des assertions financières.\n\n\nOrcom — Apprenti comptable\n\nToulouse · septembre 2021 — octobre 2023\n\nGestion d’un portefeuille clients multi-secteurs : préparation des états financiers, accompagnement des dirigeants dans le pilotage de leur performance. Automatisation de saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par machine learning."
   },
   {
+    "objectID": "about.html#projet",
+    "href": "about.html#projet",
+    "title": "Parcours",
+    "section": "Projet",
+    "text": "Projet\n\nPrévision financière — Machine Learning\n\nToulouse · depuis décembre 2025\n\nModèle de forecasting du chiffre d’affaires (XGBoost) entraîné sur plus de 3 ans d’historique, intégrant des variables multi-sources (météo, saisonnalité, événements locaux). Interprétabilité via SHAP pour identifier les principaux drivers de performance, restitués en dashboard interactif."
+  },
+  {
     "objectID": "about.html#formation",
     "href": "about.html#formation",
     "title": "Parcours",
     "section": "Formation",
-    "text": "Formation\n\n\n\n\n\n\n\nDEC\nMémorialiste — en cours · Ordre des Experts-Comptables, Toulouse\n\n\nAnalytics Engineer\nDataBird · 2025 — BigQuery, dbt, Fivetran, Git\n\n\nDSCG\nInstitut Limayrac · Toulouse · 2023"
+    "text": "Formation\n\n\n\n\n\n\n\nDEC\nMémorialiste — en cours · Ordre des Experts-Comptables, Toulouse\n\n\nAnalytics Engineer\nDataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase\n\n\nDSCG\nInstitut Limayrac · Toulouse · 2023"
   },
   {
     "objectID": "about.html#compétences",
     "href": "about.html#compétences",
     "title": "Parcours",
     "section": "Compétences",
-    "text": "Compétences\n\n\n\n\n\n\n\nFinance\nReporting financier, P&L, contrôle interne, consolidation, IFRS\n\n\nDonnées\nSQL, Python, dbt, BigQuery, Alteryx, Power BI\n\n\n\n\nSystèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)"
+    "text": "Compétences\n\n\n\n\n\n\n\nFinance\nReporting financier, forecasting, analyse P&L, contrôle interne, consolidation, IFRS\n\n\nDonnées\nSQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (avancé)\n\n\n\n\nSystèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)"
   },
   {
     "objectID": "about.html#hors-du-bureau",
@@ -54,6 +61,48 @@
     "title": "Parcours",
     "section": "Hors du bureau",
     "text": "Hors du bureau\nLe même réflexe en dehors du travail : deux ans de données d’entraînement, cyclisme et course à pied, analysées comme n’importe quel autre jeu de données."
+  },
+  {
+    "objectID": "about.html#profile",
+    "href": "about.html#profile",
+    "title": "Parcours",
+    "section": "Profile",
+    "text": "Profile\n5 years in accounting and audit, including 3 years in financial and IT audit at Forvis Mazars. French CPA candidate (Expert-Comptable Mémorialiste), DSCG graduate, Certified Analytics Engineer (DataBird, 2025).\nI bring the accounting standards, business processes and internal-control fluency of a classic auditor — and I query the databases that produce the numbers myself, in SQL, dbt and Python, rather than stopping at the sample."
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "Parcours",
+    "section": "Experience",
+    "text": "Experience\n\nForvis Mazars — Senior Auditor & Data Analytics\n\nToulouse · since September 2025 — internal promotion\n\nLed and supervised a team of 3 to 5 auditors on large-cap engagements: planning, work review and deliverables management. Designed and deployed Data Analytics tools (Alteryx, SQL, Power BI) to automate Procure-to-Pay cycle controls on a €1B+ procurement portfolio. Combined financial and IT audits, with cross-functional international coordination across 15 countries.\n\n\nForvis Mazars — Financial & IT Auditor\n\nToulouse · November 2023 — August 2025\n\nAudited financial controls and information systems (ITGC/ITAC) across SAP and other ERP environments. Data analytics on key cycles — revenue, inventory, expenses — leveraging datasets of 1M+ journal entries for anomaly detection and validation of financial assertions.\n\n\nOrcom — Accounting Apprentice\n\nToulouse · September 2021 — October 2023\n\nManaged a multi-sector client portfolio: prepared financial statements and supported business owners in steering their performance. Automated accounting data entry through Excel macros. Master’s thesis: a machine-learning financial forecasting model."
+  },
+  {
+    "objectID": "about.html#project",
+    "href": "about.html#project",
+    "title": "Parcours",
+    "section": "Project",
+    "text": "Project\n\nFinancial Forecasting — Machine Learning\n\nToulouse · since December 2025\n\nRevenue forecasting model (XGBoost) trained on 3+ years of historical data, with feature engineering across multi-source variables (weather, school calendar, local events, seasonality). SHAP values for prediction interpretability — key performance drivers translated into actionable insights and an interactive forecasting dashboard."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Parcours",
+    "section": "Education",
+    "text": "Education\n\n\n\n\n\n\n\nFrench CPA (DEC)\nIn progress · Ordre des Experts-Comptables, Toulouse\n\n\nAnalytics Engineer\nDataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase\n\n\nDSCG\nAdvanced Diploma in Accounting & Management · Institut Limayrac, Toulouse · 2023"
+  },
+  {
+    "objectID": "about.html#skills",
+    "href": "about.html#skills",
+    "title": "Parcours",
+    "section": "Skills",
+    "text": "Skills\n\n\n\n\n\n\n\nFinance\nFinancial reporting, forecasting, P&L analysis, internal control, consolidation, IFRS\n\n\nData\nSQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (advanced)\n\n\n\n\nSystems: SAP, ITGC/ITAC · Languages: French (native), English (professional, B2+)"
+  },
+  {
+    "objectID": "about.html#outside-the-office",
+    "href": "about.html#outside-the-office",
+    "title": "Parcours",
+    "section": "Outside the office",
+    "text": "Outside the office\nThe same reflex off the clock: two years of training data — cycling and running — analysed like any other dataset."
   },
   {
     "objectID": "projects/contoso-marges/index.html",
