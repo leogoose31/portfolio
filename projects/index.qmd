@@ -3,6 +3,19 @@ title: "Projets"
 ---
 
 ::: {.projet-card}
+### [Prévoir le chiffre d'affaires d'un restaurant…](memoire-dscg-ia-previsions/index.html)
+
+Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.
+
+::: {.tags}
+[Python]{.tag}
+[XGBoost]{.tag}
+[Optuna]{.tag}
+[Séries temporelles]{.tag}
+:::
+:::
+
+::: {.projet-card}
 ### [Où part la marge : décomposition par canal de distribution](contoso-marges/index.html)
 
 Le canal le plus rentable n'est pas celui qu'on croit une fois les coûts logistiques alloués — la marge brute seule ne le montre pas.
