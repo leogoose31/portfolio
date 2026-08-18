@@ -1,6 +1,6 @@
 ---
 title: "Prévoir le chiffre d'affaires d'un restaurant, jour par jour"
-subtitle: "Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023."
+subtitle: "Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023."
 ---
 
 ::: {.projet-meta}
@@ -23,18 +23,20 @@ La question posée par le mémoire : peut-on prévoir le chiffre d'affaires **jo
 
 ## Les données
 
-Point de départ : la caisse informatisée du client, dont les encaissements remontent en comptabilité via une API. J'ai extrait le grand livre du journal *Vente*, du **01/04/2018 au 30/03/2023** — le chiffre d'affaires journalier ventilé par taux de TVA, entièrement **anonymisé**.
+Point de départ : la caisse informatisée du client. Les encaissements sont détaillés par jour et ventilés par taux de TVA, puis remontés via une API. C'est ce **journal de caisse**, du **01/04/2018 au 30/03/2023** et entièrement **anonymisé**, qui a servi de base d'entraînement.
 
 Choix assumé : prédire le chiffre d'affaires **à partir de lui-même**, sans donnée externe. À cette granularité, aucune source météo ou sectorielle n'a été jugée assez pertinente pour justifier sa complexité. Le nettoyage a consisté à retirer les jours de fermeture — repos hebdomadaire et fermetures administratives Covid — repérés en traçant la série.
 
+![Le chiffre d'affaires journalier de 2018 à 2023. Les deux paliers plats correspondent aux fermetures Covid ; le niveau grimpe nettement à partir de mi-2022.](img/fig-jeu-de-donnees.png){fig-alt="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022."}
+
 ::: {.en-clair}
-**En clair —** la matière première n'est pas un fichier de data science tout prêt : c'est la comptabilité réelle d'un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.
+**En clair —** la matière première n'est pas un fichier de data science tout prêt : c'est la caisse réelle d'un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.
 :::
 
 ## L'approche
 
 ```
-Grand livre — journal Vente (2018 → 2023)
+Journal de caisse — CA journalier par TVA (2018 → 2023)
     └── Python (pandas)
             ├── nettoyage           — retrait des jours fermés (repos, Covid)
             ├── détection de rupture — lib « ruptures », point au 23/07
@@ -52,6 +54,8 @@ Technique
 
 La visualisation révèle deux régimes de chiffre d'affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque `ruptures` (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J'ai donc réaligné la distribution antérieure via l'**Optimal Transport** — un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.
 
+![L'Optimal Transport relève la période antérieure au 23 juillet (en bleu) au niveau du régime récent (en rouge), pour homogénéiser la série d'entraînement.](img/fig-optimal-transport.png){fig-alt="Graphique montrant les données originales en bleu et les mêmes données transportées vers le haut en rouge après Optimal Transport."}
+
 ::: {.en-clair}
 **En clair —** à un moment, le restaurant a durablement changé de niveau d'activité (nouvelle carte, notoriété, travaux…). Apprendre sur « l'ancien » et « le nouveau » mélangés brouille tout. L'Optimal Transport remet l'ancienne période à l'échelle de la nouvelle, pour que le modèle apprenne sur une histoire cohérente.
 :::
@@ -63,6 +67,8 @@ Technique
 :::
 
 Le jeu de départ ne contient que deux colonnes : date et chiffre d'affaires. J'en ai dérivé quatorze variables **calendaires** : jour de la semaine, week-end (oui/non), jour de l'année, numéro de semaine, position en début ou fin de mois, etc. C'est le cœur de la performance : ce ne sont pas les chiffres bruts qui font la prévision, mais ces repères temporels que le modèle apprend à associer aux hausses et aux baisses.
+
+![Zoom sur un mois : la structure hebdomadaire saute aux yeux, avec des pics réguliers de week-end. C'est exactement ce que les variables calendaires permettent au modèle de capter.](img/fig-saisonnalite-hebdo.png){fig-alt="Série du chiffre d'affaires sur un mois montrant une nette périodicité hebdomadaire, avec des pics le week-end."}
 
 ::: {.en-clair}
 **En clair —** une date seule (« 2023-07-15 ») ne dit rien à un modèle. En la décomposant en « samedi », « mi-juillet », « milieu de mois », on lui donne les indices qu'un gérant utilise intuitivement pour savoir si la journée sera chargée.
@@ -113,6 +119,8 @@ Le découpage entraînement / test est **temporel** (90 / 10), jamais aléatoire
 | RMSE | 118 € | 290 € | 144 € |
 
 Sur les données de test — jamais montrées au modèle — le chiffre d'affaires journalier est prédit avec une **erreur moyenne d'environ 219 €** (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l'entraînement qu'au test, le modèle est **partiellement surajusté** — je le diagnostique sans le masquer.
+
+![Ventes réelles (bleu) contre prévisions du modèle XGBoost (rouge). La ligne verticale sépare les données d'entraînement (à gauche) des données de test (à droite) ; la partie finale prolonge la prévision au-delà des données disponibles.](img/fig-resultat-xgboost.png){fig-alt="Graphique comparant les ventes réelles en bleu et les prévisions XGBoost en rouge, avec une ligne verticale séparant entraînement et test."}
 
 ::: {.en-clair}
 **En clair —** en moyenne, le modèle se trompe de ~219 € par jour sur des journées qu'il découvre. « Surajusté » veut dire qu'il a un peu trop appris par cœur son historique, au lieu de dégager la tendance générale.

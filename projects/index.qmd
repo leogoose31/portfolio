@@ -5,7 +5,7 @@ title: "Projets"
 ::: {.projet-card}
 ### [Prévoir le chiffre d'affaires d'un restaurant, jour par jour](memoire-dscg-ia-previsions/index.html)
 
-Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.
+Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.
 
 ::: {.tags}
 [Python]{.tag}
