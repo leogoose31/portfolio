@@ -49,46 +49,11 @@
     "text": "Pour aller plus loin\nDeux prolongements naturels : un passage en streaming — un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée — et une restitution Power BI : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.\n\nRéalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l’intelligence artificielle au sein de l’Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l’IA."
   },
   {
-    "objectID": "projects/contoso-marges/index.html",
-    "href": "projects/contoso-marges/index.html",
-    "title": "Où part la marge : décomposition par canal de distribution",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Léo Gouzy",
     "section": "",
-    "text": "SQL dbt BigQuery Power BI"
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#le-problème",
-    "href": "projects/contoso-marges/index.html#le-problème",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Le problème",
-    "text": "Le problème\nUn distributeur multi-canal affiche une marge brute globale satisfaisante. Le reporting de pilotage, construit sur cette seule métrique, masque des écarts importants entre canaux une fois les coûts logistiques alloués.\nLa question : quelle est la marge nette réelle par canal de distribution, et quels en sont les drivers ?"
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#lapproche",
-    "href": "projects/contoso-marges/index.html#lapproche",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "L’approche",
-    "text": "L’approche\nReconstruction d’un P&L par axe (canal, produit, période) depuis les tables brutes du dataset public Contoso (Microsoft). Le pipeline suit une architecture dbt en deux couches :\nBigQuery (raw)\n    └── dbt\n            ├── staging       — nettoyage, typage, renommage\n            └── marts\n                ├── mart_ventes   — CA net par canal / produit / période\n                ├── mart_couts    — COGS + coûts logistiques alloués\n                └── mart_pnl      — P&L par axe avec comparatif N-1\nClé d’allocation des coûts logistiques : poids net des commandes. Les tests de cohérence (somme des marges = total, absence de lignes orphelines) sont déclarés dans schema.yml."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#le-résultat",
-    "href": "projects/contoso-marges/index.html#le-résultat",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Le résultat",
-    "text": "Le résultat\n\n\n\nCanal\nMarge brute\nMarge nette\n\n\n\n\nOnline\n44 %\n41 %\n\n\nRetail\n38 %\n31 %\n\n\nDistribution\n29 %\n22 %\n\n\n\nLe canal en ligne est significativement plus rentable que le retail après allocation — l’inverse n’est pas visible sur la marge brute seule. L’écart retail / distribution sur la marge nette (9 pts) est presque entièrement expliqué par les coûts de stockage."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#limites",
-    "href": "projects/contoso-marges/index.html#limites",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Limites",
-    "text": "Limites\nLe choix de la clé d’allocation (poids net) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#reproduire",
-    "href": "projects/contoso-marges/index.html#reproduire",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Reproduire",
-    "text": "Reproduire\nDonnées : Contoso Sales Dataset — Microsoft\nDépôt : [À COMPLÉTER]"
+    "text": "Léo Gouzy\n\nAuditeur financier · Data analytics · Toulouse\n\nAuditeur financier & data analyst senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nPassionné par l’analyse et la science des données, j’aborde l’audit comme un travail sur la donnée : remonter aux flux qui produisent les chiffres, les modéliser, les explorer pour couvrir des volumes hors de portée d’un échantillonnage manuel.\nJ’adopte une approche data driven dans tout ce que j’entreprends, jusqu’à l’analyse de mes données sportives.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
   },
   {
     "objectID": "about.html",
@@ -182,17 +147,10 @@
     "text": "Outside the office\nThe same reflex off the clock: two years of training data — cycling and running — analysed like any other dataset."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Léo Gouzy",
-    "section": "",
-    "text": "Léo Gouzy\n\nAuditeur financier · Data analytics · Toulouse\n\nAuditeur financier & data analyst senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nPassionné par l’analyse et la science des données, j’aborde l’audit comme un travail sur la donnée : remonter aux flux qui produisent les chiffres, les modéliser, les explorer pour couvrir des volumes hors de portée d’un échantillonnage manuel.\nJ’adopte une approche data driven dans tout ce que j’entreprends, jusqu’à l’analyse de mes données sportives.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
-  },
-  {
     "objectID": "projects/index.html",
     "href": "projects/index.html",
     "title": "Projets",
     "section": "",
-    "text": "Prévoir le chiffre d’affaires d’un restaurant, jour par jour\nUn modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.\n\nPython XGBoost Optuna Séries temporelles\n\n\n\nOù part la marge : décomposition par canal de distribution\nLe canal le plus rentable n’est pas celui qu’on croit une fois les coûts logistiques alloués — la marge brute seule ne le montre pas.\n\nSQL dbt BigQuery Power BI"
+    "text": "Prévoir le chiffre d’affaires d’un restaurant, jour par jour\nUn modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.\n\nPython XGBoost Optuna Séries temporelles"
   }
 ]
