@@ -1,17 +1,94 @@
 [
   {
-    "objectID": "projects/index.html",
-    "href": "projects/index.html",
-    "title": "Projets",
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html",
+    "href": "projects/memoire-dscg-ia-previsions/index.html",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
     "section": "",
-    "text": "Où part la marge : décomposition par canal de distribution\nLe canal le plus rentable n’est pas celui qu’on croit une fois les coûts logistiques alloués — la marge brute seule ne le montre pas.\n\nSQL dbt BigQuery Power BI"
+    "text": "Python XGBoost Optuna Séries temporelles"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Léo Gouzy",
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#le-problème",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#le-problème",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "Le problème",
+    "text": "Le problème\nLe prévisionnel comptable « classique » repose sur des moyennes, des hypothèses de marge constantes et une granularité mensuelle. Il ne respecte pas la saisonnalité réelle de l’activité et reste exposé aux erreurs de jugement humain — le bruit et le biais décrits par Kahneman : deux collaborateurs partant des mêmes chiffres produisent des prévisions sensiblement différentes.\nLa question : peut-on prévoir le chiffre d’affaires journalier d’un restaurant à partir de ses seules données comptables, pour en faire un outil opérationnel — gestion des stocks et de la masse salariale ? L’objectif est double, économique et environnemental : mieux acheter, c’est aussi moins jeter."
+  },
+  {
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#les-données",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#les-données",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "Les données",
+    "text": "Les données\nPoint de départ : la caisse informatisée du client, dont les encaissements remontent en comptabilité via une API. J’ai extrait le grand livre du journal Vente du 01/04/2018 au 30/03/2023 — le chiffre d’affaires journalier par taux de TVA, anonymisé.\nChoix assumé : prédire le chiffre d’affaires vis-à-vis de lui-même, sans donnée externe (aucune source météo ou sectorielle n’a été jugée pertinente à cette granularité). Le nettoyage a consisté à retirer les jours de fermeture — repos hebdomadaire et fermetures administratives Covid — repérés en visualisant la série."
+  },
+  {
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#lapproche",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#lapproche",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "L’approche",
+    "text": "L’approche\nGrand livre — journal Vente (2018 → 2023)\n    └── Python (pandas)\n            ├── nettoyage           — retrait des jours fermés (repos, Covid)\n            ├── détection de rupture — lib « ruptures », point au 23/07\n            ├── Optimal Transport    — réalignement des deux régimes de CA\n            ├── feature engineering  — 2 → 16 variables calendaires\n            ├── target encoding      — sous cross-validation (anti-fuite)\n            └── XGBoost + Optuna      — split temporel 90 / 10\nTrois partis pris méthodologiques structurent le pipeline :\n\nRupture de série et Optimal Transport. La visualisation révèle deux régimes de chiffre d’affaires séparés par un point de rupture (détecté avec la bibliothèque ruptures). Plutôt que d’entraîner sur une série incohérente, j’ai réaligné la distribution antérieure via l’Optimal Transport — le modèle entraîné sans ce réalignement sous-évaluait systématiquement les données de test.\nFeature engineering calendaire. Le jeu de départ (date, CA) passe de 2 à 16 colonnes : week-end, jour de la semaine, jour et semaine de l’année, position en début ou fin de mois. C’est là que se joue l’essentiel de la performance.\nEncodage cible sans fuite. Les variables catégorielles sont remplacées par la moyenne du CA associé, mais sous cross-validation pour éviter que le modèle ne « voie » sa propre cible.\n\nLe choix du modèle est raisonné plutôt que subi : Gradient Boosting Machine (trop simple), LightGBM (taillé pour les gros volumes, inadapté à un jeu de données restreint), puis XGBoost — retenu pour sa régularisation intégrée contre le surajustement et sa parallélisation. Les hyperparamètres (learning_rate, n_estimators, max_depth, subsample) ont été optimisés avec Optuna. Le découpage entraînement / test est temporel (90 / 10), jamais aléatoire : rompre une série chronologique fausserait le modèle."
+  },
+  {
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#le-résultat",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#le-résultat",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "Le résultat",
+    "text": "Le résultat\n\n\n\nMétrique\nEntraînement\nTest\nGlobal\n\n\n\n\nMAE\n90 €\n219 €\n103 €\n\n\nRMSE\n118 €\n290 €\n144 €\n\n\n\nSur les données de test — jamais montrées au modèle — le chiffre d’affaires journalier est prédit avec une erreur moyenne d’environ 219 €. Deux lectures s’imposent, et je les assume telles quelles :\n\nRMSE test &gt; MAE test : la plupart des prédictions sont proches du réel, mais quelques jours sont fortement mal estimés.\nTest &gt; entraînement : le modèle est partiellement surajusté — il se spécialise sur l’historique plus qu’il ne généralise.\n\nL’analyse d’importance des variables confirme la lecture métier : la variable week-end arrive en tête, suivie du jour de la semaine, puis du jour de l’année (saisonnalité). Le modèle a bien capté que les pics de CA sont concentrés le week-end."
+  },
+  {
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#limites",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#limites",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "Limites",
+    "text": "Limites\n\nSurajustement partiel : les pistes de correction sont plus de données d’entraînement, l’ajout de variables externes, ou une réingénierie des résidus.\nPas de variable « jours fériés » : le modèle surestime nettement le 24 décembre.\nDépendance à une fréquence de données élevée : le même modèle sur une TPE du bâtiment, aux chantiers irréguliers, serait bien moins précis.\nLes chocs imprévisibles restent imprévisibles : aucune de ces méthodes n’aurait anticipé le Covid.\nUn seuil de livraison reste à fixer : à partir de quelle MAE / RMSE un prévisionnel est-il assez fiable pour être présenté à un client ? La question se tranche avant la mission, pas après."
+  },
+  {
+    "objectID": "projects/memoire-dscg-ia-previsions/index.html#pour-aller-plus-loin",
+    "href": "projects/memoire-dscg-ia-previsions/index.html#pour-aller-plus-loin",
+    "title": "Prévoir le chiffre d’affaires d’un restaurant…",
+    "section": "Pour aller plus loin",
+    "text": "Pour aller plus loin\nDeux prolongements naturels : un passage en streaming (flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution Power BI — prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.\n\nRéalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l’intelligence artificielle au sein de l’Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l’IA."
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html",
+    "href": "projects/contoso-marges/index.html",
+    "title": "Où part la marge : décomposition par canal de distribution",
     "section": "",
-    "text": "Léo Gouzy\n\nAuditeur financier · Data analytics · Toulouse\n\nAuditeur financier & data analyst senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nPassionné par l’analyse et la science des données, j’aborde l’audit comme un travail sur la donnée : remonter aux flux qui produisent les chiffres, les modéliser, les explorer pour couvrir des volumes hors de portée d’un échantillonnage manuel.\nJ’adopte une approche data driven dans tout ce que j’entreprends, jusqu’à l’analyse de mes données sportives.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
+    "text": "SQL dbt BigQuery Power BI"
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html#le-problème",
+    "href": "projects/contoso-marges/index.html#le-problème",
+    "title": "Où part la marge : décomposition par canal de distribution",
+    "section": "Le problème",
+    "text": "Le problème\nUn distributeur multi-canal affiche une marge brute globale satisfaisante. Le reporting de pilotage, construit sur cette seule métrique, masque des écarts importants entre canaux une fois les coûts logistiques alloués.\nLa question : quelle est la marge nette réelle par canal de distribution, et quels en sont les drivers ?"
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html#lapproche",
+    "href": "projects/contoso-marges/index.html#lapproche",
+    "title": "Où part la marge : décomposition par canal de distribution",
+    "section": "L’approche",
+    "text": "L’approche\nReconstruction d’un P&L par axe (canal, produit, période) depuis les tables brutes du dataset public Contoso (Microsoft). Le pipeline suit une architecture dbt en deux couches :\nBigQuery (raw)\n    └── dbt\n            ├── staging       — nettoyage, typage, renommage\n            └── marts\n                ├── mart_ventes   — CA net par canal / produit / période\n                ├── mart_couts    — COGS + coûts logistiques alloués\n                └── mart_pnl      — P&L par axe avec comparatif N-1\nClé d’allocation des coûts logistiques : poids net des commandes. Les tests de cohérence (somme des marges = total, absence de lignes orphelines) sont déclarés dans schema.yml."
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html#le-résultat",
+    "href": "projects/contoso-marges/index.html#le-résultat",
+    "title": "Où part la marge : décomposition par canal de distribution",
+    "section": "Le résultat",
+    "text": "Le résultat\n\n\n\nCanal\nMarge brute\nMarge nette\n\n\n\n\nOnline\n44 %\n41 %\n\n\nRetail\n38 %\n31 %\n\n\nDistribution\n29 %\n22 %\n\n\n\nLe canal en ligne est significativement plus rentable que le retail après allocation — l’inverse n’est pas visible sur la marge brute seule. L’écart retail / distribution sur la marge nette (9 pts) est presque entièrement expliqué par les coûts de stockage."
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html#limites",
+    "href": "projects/contoso-marges/index.html#limites",
+    "title": "Où part la marge : décomposition par canal de distribution",
+    "section": "Limites",
+    "text": "Limites\nLe choix de la clé d’allocation (poids net) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes."
+  },
+  {
+    "objectID": "projects/contoso-marges/index.html#reproduire",
+    "href": "projects/contoso-marges/index.html#reproduire",
+    "title": "Où part la marge : décomposition par canal de distribution",
+    "section": "Reproduire",
+    "text": "Reproduire\nDonnées : Contoso Sales Dataset — Microsoft\nDépôt : [À COMPLÉTER]"
   },
   {
     "objectID": "about.html",
@@ -105,45 +182,17 @@
     "text": "Outside the office\nThe same reflex off the clock: two years of training data — cycling and running — analysed like any other dataset."
   },
   {
-    "objectID": "projects/contoso-marges/index.html",
-    "href": "projects/contoso-marges/index.html",
-    "title": "Où part la marge : décomposition par canal de distribution",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Léo Gouzy",
     "section": "",
-    "text": "SQL dbt BigQuery Power BI"
+    "text": "Léo Gouzy\n\nAuditeur financier · Data analytics · Toulouse\n\nAuditeur financier & data analyst senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.\nPassionné par l’analyse et la science des données, j’aborde l’audit comme un travail sur la donnée : remonter aux flux qui produisent les chiffres, les modéliser, les explorer pour couvrir des volumes hors de portée d’un échantillonnage manuel.\nJ’adopte une approche data driven dans tout ce que j’entreprends, jusqu’à l’analyse de mes données sportives.\nSQL · dbt · Python · Power BI\n\nParcours Projets"
   },
   {
-    "objectID": "projects/contoso-marges/index.html#le-problème",
-    "href": "projects/contoso-marges/index.html#le-problème",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Le problème",
-    "text": "Le problème\nUn distributeur multi-canal affiche une marge brute globale satisfaisante. Le reporting de pilotage, construit sur cette seule métrique, masque des écarts importants entre canaux une fois les coûts logistiques alloués.\nLa question : quelle est la marge nette réelle par canal de distribution, et quels en sont les drivers ?"
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#lapproche",
-    "href": "projects/contoso-marges/index.html#lapproche",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "L’approche",
-    "text": "L’approche\nReconstruction d’un P&L par axe (canal, produit, période) depuis les tables brutes du dataset public Contoso (Microsoft). Le pipeline suit une architecture dbt en deux couches :\nBigQuery (raw)\n    └── dbt\n            ├── staging       — nettoyage, typage, renommage\n            └── marts\n                ├── mart_ventes   — CA net par canal / produit / période\n                ├── mart_couts    — COGS + coûts logistiques alloués\n                └── mart_pnl      — P&L par axe avec comparatif N-1\nClé d’allocation des coûts logistiques : poids net des commandes. Les tests de cohérence (somme des marges = total, absence de lignes orphelines) sont déclarés dans schema.yml."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#le-résultat",
-    "href": "projects/contoso-marges/index.html#le-résultat",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Le résultat",
-    "text": "Le résultat\n\n\n\nCanal\nMarge brute\nMarge nette\n\n\n\n\nOnline\n44 %\n41 %\n\n\nRetail\n38 %\n31 %\n\n\nDistribution\n29 %\n22 %\n\n\n\nLe canal en ligne est significativement plus rentable que le retail après allocation — l’inverse n’est pas visible sur la marge brute seule. L’écart retail / distribution sur la marge nette (9 pts) est presque entièrement expliqué par les coûts de stockage."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#limites",
-    "href": "projects/contoso-marges/index.html#limites",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Limites",
-    "text": "Limites\nLe choix de la clé d’allocation (poids net) est une hypothèse : changer ce paramètre modifie les résultats de façon non négligeable. Le modèle ne gère pas les retours produits ni la saisonnalité des coûts fixes."
-  },
-  {
-    "objectID": "projects/contoso-marges/index.html#reproduire",
-    "href": "projects/contoso-marges/index.html#reproduire",
-    "title": "Où part la marge : décomposition par canal de distribution",
-    "section": "Reproduire",
-    "text": "Reproduire\nDonnées : Contoso Sales Dataset — Microsoft\nDépôt : [À COMPLÉTER]"
+    "objectID": "projects/index.html",
+    "href": "projects/index.html",
+    "title": "Projets",
+    "section": "",
+    "text": "Prévoir le chiffre d’affaires d’un restaurant…\nUn modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.\n\nPython XGBoost Optuna Séries temporelles\n\n\n\nOù part la marge : décomposition par canal de distribution\nLe canal le plus rentable n’est pas celui qu’on croit une fois les coûts logistiques alloués — la marge brute seule ne le montre pas.\n\nSQL dbt BigQuery Power BI"
   }
 ]
