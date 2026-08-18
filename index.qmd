@@ -6,14 +6,14 @@ title: ""
 # Léo Gouzy
 
 ::: {.subtitle}
-Auditeur financier · Passionné de data · Toulouse
+Auditeur financier · Data analytics · Toulouse
 :::
 
-Auditeur financier senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.
+Auditeur financier & data analyst senior chez Forvis Mazars. Mémorialiste DEC, titulaire du DSCG.
 
-La donnée est mon terrain de jeu. J'aborde chaque mission d'audit comme une question de data science : remonter aux flux qui produisent les chiffres, les modéliser en SQL et dbt, les explorer en Python — pour couvrir des volumes qu'un échantillonnage manuel ne pourra jamais atteindre.
+Passionné par l'analyse et la science des données, j'aborde l'audit comme un travail sur la donnée : remonter aux flux qui produisent les chiffres, les modéliser, les explorer pour couvrir des volumes hors de portée d'un échantillonnage manuel.
 
-Analyser, tester, expliquer : ce que je fais sur un état financier, je le fais par curiosité sur tout jeu de données qui me tombe sous la main.
+J'adopte une approche data driven dans tout ce que j'entreprends, jusqu'à l'analyse de mes données sportives.
 
 [SQL · dbt · Python · Power BI]{.tools}
 
