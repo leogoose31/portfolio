@@ -1,0 +1,74 @@
+---
+title: "Prévoir le chiffre d'affaires d'un restaurant, jour par jour"
+subtitle: "Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023."
+---
+
+::: {.projet-meta}
+[Python]{.tag}
+[XGBoost]{.tag}
+[Optuna]{.tag}
+[Séries temporelles]{.tag}
+:::
+
+## Le problème
+
+Le prévisionnel comptable « classique » repose sur des moyennes, des hypothèses de marge constantes et une granularité mensuelle. Il ne respecte pas la saisonnalité réelle de l'activité et reste exposé aux erreurs de jugement humain — le *bruit* et le *biais* décrits par Kahneman : deux collaborateurs partant des mêmes chiffres produisent des prévisions sensiblement différentes.
+
+La question : peut-on prévoir le chiffre d'affaires **journalier** d'un restaurant à partir de ses seules données comptables, pour en faire un outil opérationnel — gestion des stocks et de la masse salariale ? L'objectif est double, économique et environnemental : mieux acheter, c'est aussi moins jeter.
+
+## Les données
+
+Point de départ : la caisse informatisée du client, dont les encaissements remontent en comptabilité via une API. J'ai extrait le grand livre du journal *Vente* du **01/04/2018 au 30/03/2023** — le chiffre d'affaires journalier par taux de TVA, anonymisé.
+
+Choix assumé : prédire le chiffre d'affaires **vis-à-vis de lui-même**, sans donnée externe (aucune source météo ou sectorielle n'a été jugée pertinente à cette granularité). Le nettoyage a consisté à retirer les jours de fermeture — repos hebdomadaire et fermetures administratives Covid — repérés en visualisant la série.
+
+## L'approche
+
+```
+Grand livre — journal Vente (2018 → 2023)
+    └── Python (pandas)
+            ├── nettoyage           — retrait des jours fermés (repos, Covid)
+            ├── détection de rupture — lib « ruptures », point au 23/07
+            ├── Optimal Transport    — réalignement des deux régimes de CA
+            ├── feature engineering  — 2 → 16 variables calendaires
+            ├── target encoding      — sous cross-validation (anti-fuite)
+            └── XGBoost + Optuna      — split temporel 90 / 10
+```
+
+Trois partis pris méthodologiques structurent le pipeline :
+
+- **Rupture de série et Optimal Transport.** La visualisation révèle deux régimes de chiffre d'affaires séparés par un point de rupture (détecté avec la bibliothèque `ruptures`). Plutôt que d'entraîner sur une série incohérente, j'ai réaligné la distribution antérieure via l'*Optimal Transport* — le modèle entraîné sans ce réalignement sous-évaluait systématiquement les données de test.
+- **Feature engineering calendaire.** Le jeu de départ (date, CA) passe de 2 à 16 colonnes : week-end, jour de la semaine, jour et semaine de l'année, position en début ou fin de mois. C'est là que se joue l'essentiel de la performance.
+- **Encodage cible sans fuite.** Les variables catégorielles sont remplacées par la moyenne du CA associé, mais **sous cross-validation** pour éviter que le modèle ne « voie » sa propre cible.
+
+Le choix du modèle est raisonné plutôt que subi : Gradient Boosting Machine (trop simple), LightGBM (taillé pour les gros volumes, inadapté à un jeu de données restreint), puis **XGBoost** — retenu pour sa régularisation intégrée contre le surajustement et sa parallélisation. Les hyperparamètres (`learning_rate`, `n_estimators`, `max_depth`, `subsample`) ont été optimisés avec **Optuna**. Le découpage entraînement / test est **temporel** (90 / 10), jamais aléatoire : rompre une série chronologique fausserait le modèle.
+
+## Le résultat
+
+| Métrique | Entraînement | Test | Global |
+|---|---|---|---|
+| MAE  | 90 €  | 219 € | 103 € |
+| RMSE | 118 € | 290 € | 144 € |
+
+Sur les données de test — jamais montrées au modèle — le chiffre d'affaires journalier est prédit avec une erreur moyenne d'environ **219 €**. Deux lectures s'imposent, et je les assume telles quelles :
+
+- **RMSE test > MAE test** : la plupart des prédictions sont proches du réel, mais quelques jours sont fortement mal estimés.
+- **Test > entraînement** : le modèle est **partiellement surajusté** — il se spécialise sur l'historique plus qu'il ne généralise.
+
+L'analyse d'importance des variables confirme la lecture métier : la variable **week-end** arrive en tête, suivie du **jour de la semaine**, puis du jour de l'année (saisonnalité). Le modèle a bien capté que les pics de CA sont concentrés le week-end.
+
+## Limites
+
+- **Surajustement partiel** : les pistes de correction sont plus de données d'entraînement, l'ajout de variables externes, ou une réingénierie des résidus.
+- **Pas de variable « jours fériés »** : le modèle surestime nettement le 24 décembre.
+- **Dépendance à une fréquence de données élevée** : le même modèle sur une TPE du bâtiment, aux chantiers irréguliers, serait bien moins précis.
+- **Les chocs imprévisibles restent imprévisibles** : aucune de ces méthodes n'aurait anticipé le Covid.
+- **Un seuil de livraison reste à fixer** : à partir de quelle MAE / RMSE un prévisionnel est-il assez fiable pour être présenté à un client ? La question se tranche *avant* la mission, pas après.
+
+## Pour aller plus loin
+
+Deux prolongements naturels : un passage en **streaming** (flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution **Power BI** — prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.
+
+::: {.travail-meta}
+Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l'intelligence artificielle au sein de l'Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l'IA.
+:::
