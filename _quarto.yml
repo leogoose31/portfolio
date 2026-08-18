@@ -6,7 +6,12 @@ project:
 
 website:
   title: "Léo Gouzy"
+  description: "Auditeur financier & data analyst à Toulouse. Passionné par l'analyse et la science des données — SQL, dbt, Python, Power BI."
   site-url: "https://leogoose31.github.io/portfolio"
+  favicon: assets/favicon.svg
+  image: assets/og-image.png
+  open-graph: true
+  twitter-card: true
   navbar:
     left:
       - href: index.qmd
@@ -15,8 +20,32 @@ website:
         text: Parcours
       - href: projects/index.qmd
         text: Projets
+    right:
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/léo-gouzy-013a65151"
+        aria-label: LinkedIn
+        target: _blank
+      - icon: github
+        href: "https://github.com/leogoose31"
+        aria-label: GitHub
+        target: _blank
+      - icon: envelope
+        href: "mailto:leogouzy31@gmail.com"
+        aria-label: Email
     background: light
     border: true
+  page-footer:
+    border: true
+    left: "© 2026 Léo Gouzy · Toulouse"
+    right:
+      - text: "leogouzy31@gmail.com"
+        href: "mailto:leogouzy31@gmail.com"
+      - text: "LinkedIn"
+        href: "https://www.linkedin.com/in/léo-gouzy-013a65151"
+        target: _blank
+      - text: "GitHub"
+        href: "https://github.com/leogoose31"
+        target: _blank
 
 format:
   html:
