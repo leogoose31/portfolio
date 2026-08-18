@@ -1,5 +1,5 @@
 ---
-title: "Prévoir le chiffre d'affaires d'un restaurant, jour par jour"
+title: "Prévoir le chiffre d'affaires d'un restaurant…"
 subtitle: "Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023."
 ---
 
