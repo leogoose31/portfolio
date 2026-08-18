@@ -77,12 +77,18 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Prévoir le chiffre d’affaires d’un restaurant, jour par jour – Léo Gouzy">
-<meta property="og:description" content="Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.">
-<meta property="og:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/assets/og-image.png">
+<meta property="og:description" content="Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.">
+<meta property="og:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/img/fig-jeu-de-donnees.png">
 <meta property="og:site_name" content="Léo Gouzy">
+<meta property="og:image:alt" content="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022.">
+<meta property="og:image:height" content="422">
+<meta property="og:image:width" content="1219">
 <meta name="twitter:title" content="Prévoir le chiffre d’affaires d’un restaurant, jour par jour – Léo Gouzy">
-<meta name="twitter:description" content="Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.">
-<meta name="twitter:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/assets/og-image.png">
+<meta name="twitter:description" content="Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.">
+<meta name="twitter:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/img/fig-jeu-de-donnees.png">
+<meta name="twitter:image:alt" content="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022.">
+<meta name="twitter:image-height" content="422">
+<meta name="twitter:image-width" content="1219">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -150,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Prévoir le chiffre d’affaires d’un restaurant, jour par jour</h1>
-<p class="subtitle lead">Un modèle XGBoost entraîné sur le grand livre comptable pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.</p>
+<p class="subtitle lead">Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.</p>
 </div>
 
 
@@ -180,15 +186,21 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="les-données" class="level2">
 <h2 class="anchored" data-anchor-id="les-données">Les données</h2>
-<p>Point de départ : la caisse informatisée du client, dont les encaissements remontent en comptabilité via une API. J’ai extrait le grand livre du journal <em>Vente</em>, du <strong>01/04/2018 au 30/03/2023</strong> — le chiffre d’affaires journalier ventilé par taux de TVA, entièrement <strong>anonymisé</strong>.</p>
+<p>Point de départ : la caisse informatisée du client. Les encaissements sont détaillés par jour et ventilés par taux de TVA, puis remontés via une API. C’est ce <strong>journal de caisse</strong>, du <strong>01/04/2018 au 30/03/2023</strong> et entièrement <strong>anonymisé</strong>, qui a servi de base d’entraînement.</p>
 <p>Choix assumé : prédire le chiffre d’affaires <strong>à partir de lui-même</strong>, sans donnée externe. À cette granularité, aucune source météo ou sectorielle n’a été jugée assez pertinente pour justifier sa complexité. Le nettoyage a consisté à retirer les jours de fermeture — repos hebdomadaire et fermetures administratives Covid — repérés en traçant la série.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/fig-jeu-de-donnees.png" class="img-fluid figure-img" alt="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022."></p>
+<figcaption>Le chiffre d’affaires journalier de 2018 à 2023. Les deux paliers plats correspondent aux fermetures Covid ; le niveau grimpe nettement à partir de mi-2022.</figcaption>
+</figure>
+</div>
 <div class="en-clair">
-<p><strong>En clair —</strong> la matière première n’est pas un fichier de data science tout prêt : c’est la comptabilité réelle d’un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.</p>
+<p><strong>En clair —</strong> la matière première n’est pas un fichier de data science tout prêt : c’est la caisse réelle d’un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.</p>
 </div>
 </section>
 <section id="lapproche" class="level2">
 <h2 class="anchored" data-anchor-id="lapproche">L’approche</h2>
-<pre><code>Grand livre — journal Vente (2018 → 2023)
+<pre><code>Journal de caisse — CA journalier par TVA (2018 → 2023)
     └── Python (pandas)
             ├── nettoyage           — retrait des jours fermés (repos, Covid)
             ├── détection de rupture — lib « ruptures », point au 23/07
@@ -202,6 +214,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Technique</p>
 </div>
 <p>La visualisation révèle deux régimes de chiffre d’affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque <code>ruptures</code> (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J’ai donc réaligné la distribution antérieure via l’<strong>Optimal Transport</strong> — un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/fig-optimal-transport.png" class="img-fluid figure-img" alt="Graphique montrant les données originales en bleu et les mêmes données transportées vers le haut en rouge après Optimal Transport."></p>
+<figcaption>L’Optimal Transport relève la période antérieure au 23 juillet (en bleu) au niveau du régime récent (en rouge), pour homogénéiser la série d’entraînement.</figcaption>
+</figure>
+</div>
 <div class="en-clair">
 <p><strong>En clair —</strong> à un moment, le restaurant a durablement changé de niveau d’activité (nouvelle carte, notoriété, travaux…). Apprendre sur « l’ancien » et « le nouveau » mélangés brouille tout. L’Optimal Transport remet l’ancienne période à l’échelle de la nouvelle, pour que le modèle apprenne sur une histoire cohérente.</p>
 </div>
@@ -212,6 +230,12 @@ ul.task-list li input[type="checkbox"] {
 <p>Technique</p>
 </div>
 <p>Le jeu de départ ne contient que deux colonnes : date et chiffre d’affaires. J’en ai dérivé quatorze variables <strong>calendaires</strong> : jour de la semaine, week-end (oui/non), jour de l’année, numéro de semaine, position en début ou fin de mois, etc. C’est le cœur de la performance : ce ne sont pas les chiffres bruts qui font la prévision, mais ces repères temporels que le modèle apprend à associer aux hausses et aux baisses.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/fig-saisonnalite-hebdo.png" class="img-fluid figure-img" alt="Série du chiffre d'affaires sur un mois montrant une nette périodicité hebdomadaire, avec des pics le week-end."></p>
+<figcaption>Zoom sur un mois : la structure hebdomadaire saute aux yeux, avec des pics réguliers de week-end. C’est exactement ce que les variables calendaires permettent au modèle de capter.</figcaption>
+</figure>
+</div>
 <div class="en-clair">
 <p><strong>En clair —</strong> une date seule (« 2023-07-15 ») ne dit rien à un modèle. En la décomposant en « samedi », « mi-juillet », « milieu de mois », on lui donne les indices qu’un gérant utilise intuitivement pour savoir si la journée sera chargée.</p>
 </div>
@@ -299,6 +323,12 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Sur les données de test — jamais montrées au modèle — le chiffre d’affaires journalier est prédit avec une <strong>erreur moyenne d’environ 219 €</strong> (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l’entraînement qu’au test, le modèle est <strong>partiellement surajusté</strong> — je le diagnostique sans le masquer.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/fig-resultat-xgboost.png" class="img-fluid figure-img" alt="Graphique comparant les ventes réelles en bleu et les prévisions XGBoost en rouge, avec une ligne verticale séparant entraînement et test."></p>
+<figcaption>Ventes réelles (bleu) contre prévisions du modèle XGBoost (rouge). La ligne verticale sépare les données d’entraînement (à gauche) des données de test (à droite) ; la partie finale prolonge la prévision au-delà des données disponibles.</figcaption>
+</figure>
+</div>
 <div class="en-clair">
 <p><strong>En clair —</strong> en moyenne, le modèle se trompe de ~219 € par jour sur des journées qu’il découvre. « Surajusté » veut dire qu’il a un peu trop appris par cœur son historique, au lieu de dégager la tendance générale.</p>
 </div>
