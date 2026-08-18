@@ -1,8 +1,18 @@
 ---
 title: "Parcours"
-toc: true
-toc-location: right
+toc: false
 ---
+
+```{=html}
+<div class="lang-toggle" role="group" aria-label="Choisir la langue / Choose language">
+  <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">Français</button>
+  <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
+</div>
+```
+
+::: {.lang-content .is-visible data-lang="fr"}
+
+[Télécharger le CV (PDF)](assets/cv/cv-leo-gouzy-fr.pdf){.cv-download target="_blank" rel="noopener"}
 
 ## Profil
 
@@ -46,20 +56,31 @@ accompagnement des dirigeants dans le pilotage de leur performance. Automatisati
 saisies comptables par macros Excel. Mémoire DSCG : modèle de prévision financière par
 machine learning.
 
+## Projet
+
+### Prévision financière — Machine Learning
+::: {.travail-meta}
+Toulouse · depuis décembre 2025
+:::
+
+Modèle de forecasting du chiffre d'affaires (XGBoost) entraîné sur plus de 3 ans d'historique,
+intégrant des variables multi-sources (météo, saisonnalité, événements locaux). Interprétabilité
+via SHAP pour identifier les principaux drivers de performance, restitués en dashboard interactif.
+
 ## Formation
 
 | | |
 |---|---|
 | DEC | Mémorialiste — en cours · Ordre des Experts-Comptables, Toulouse |
-| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git |
+| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase |
 | DSCG | Institut Limayrac · Toulouse · 2023 |
 
 ## Compétences
 
 | | |
 |---|---|
-| Finance | Reporting financier, P&L, contrôle interne, consolidation, IFRS |
-| Données | SQL, Python, dbt, BigQuery, Alteryx, Power BI |
+| Finance | Reporting financier, forecasting, analyse P&L, contrôle interne, consolidation, IFRS |
+| Données | SQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (avancé) |
 
 ::: {.travail-meta}
 Systèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)
@@ -68,3 +89,115 @@ Systèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)
 ## Hors du bureau
 
 Le même réflexe en dehors du travail : deux ans de données d'entraînement, cyclisme et course à pied, analysées comme n'importe quel autre jeu de données.
+
+:::
+
+::: {.lang-content data-lang="en"}
+
+[Download CV (PDF)](assets/cv/cv-leo-gouzy-en.pdf){.cv-download target="_blank" rel="noopener"}
+
+## Profile
+
+5 years in accounting and audit, including 3 years in financial and IT audit at Forvis Mazars.
+French CPA candidate (Expert-Comptable Mémorialiste), DSCG graduate, Certified Analytics
+Engineer (DataBird, 2025).
+
+I bring the accounting standards, business processes and internal-control fluency of a classic
+auditor — and I query the databases that produce the numbers myself, in SQL, dbt and Python,
+rather than stopping at the sample.
+
+## Experience
+
+### Forvis Mazars — Senior Auditor & Data Analytics
+::: {.travail-meta}
+Toulouse · since September 2025 — internal promotion
+:::
+
+Led and supervised a team of 3 to 5 auditors on large-cap engagements: planning, work review
+and deliverables management. Designed and deployed Data Analytics tools (Alteryx, SQL, Power BI)
+to automate Procure-to-Pay cycle controls on a €1B+ procurement portfolio. Combined financial
+and IT audits, with cross-functional international coordination across 15 countries.
+
+### Forvis Mazars — Financial & IT Auditor
+::: {.travail-meta}
+Toulouse · November 2023 — August 2025
+:::
+
+Audited financial controls and information systems (ITGC/ITAC) across SAP and other ERP
+environments. Data analytics on key cycles — revenue, inventory, expenses — leveraging datasets
+of 1M+ journal entries for anomaly detection and validation of financial assertions.
+
+### Orcom — Accounting Apprentice
+::: {.travail-meta}
+Toulouse · September 2021 — October 2023
+:::
+
+Managed a multi-sector client portfolio: prepared financial statements and supported business
+owners in steering their performance. Automated accounting data entry through Excel macros.
+Master's thesis: a machine-learning financial forecasting model.
+
+## Project
+
+### Financial Forecasting — Machine Learning
+::: {.travail-meta}
+Toulouse · since December 2025
+:::
+
+Revenue forecasting model (XGBoost) trained on 3+ years of historical data, with feature
+engineering across multi-source variables (weather, school calendar, local events, seasonality).
+SHAP values for prediction interpretability — key performance drivers translated into actionable
+insights and an interactive forecasting dashboard.
+
+## Education
+
+| | |
+|---|---|
+| French CPA (DEC) | In progress · Ordre des Experts-Comptables, Toulouse |
+| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase |
+| DSCG | Advanced Diploma in Accounting & Management · Institut Limayrac, Toulouse · 2023 |
+
+## Skills
+
+| | |
+|---|---|
+| Finance | Financial reporting, forecasting, P&L analysis, internal control, consolidation, IFRS |
+| Data | SQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (advanced) |
+
+::: {.travail-meta}
+Systems: SAP, ITGC/ITAC · Languages: French (native), English (professional, B2+)
+:::
+
+## Outside the office
+
+The same reflex off the clock: two years of training data — cycling and running — analysed like any other dataset.
+
+:::
+
+```{=html}
+<script>
+(function () {
+  var KEY = "parcours-lang";
+  var buttons = document.querySelectorAll(".lang-btn");
+  var blocks = document.querySelectorAll(".lang-content");
+  function apply(lang) {
+    blocks.forEach(function (b) {
+      b.classList.toggle("is-visible", b.getAttribute("data-lang") === lang);
+    });
+    buttons.forEach(function (btn) {
+      var active = btn.getAttribute("data-lang") === lang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    try { localStorage.setItem(KEY, lang); } catch (e) {}
+  }
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      apply(btn.getAttribute("data-lang"));
+    });
+  });
+  var saved;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  apply(saved === "en" ? "en" : "fr");
+})();
+</script>
+```
