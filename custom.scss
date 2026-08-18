@@ -472,3 +472,72 @@ hr {
 }
 
 @import "components";
+
+// ---- Parcours : sélecteur de langue
+.lang-toggle {
+  display: flex;
+  gap: calc($sp / 3);
+  margin-bottom: calc($sp * 1.15);
+}
+
+.lang-btn {
+  font-family: $font-family-monospace;
+  font-size: $scale-sm;
+  letter-spacing: 0.01em;
+  color: $ink-secondary;
+  background: transparent;
+  border: 1px solid $rule;
+  border-radius: $radius;
+  padding: calc($sp / 4) calc($sp / 1.8);
+  cursor: pointer;
+  transition: color var(--motion-duration), border-color var(--motion-duration),
+    background-color var(--motion-duration);
+}
+
+.lang-btn:hover {
+  color: $ink;
+  border-color: $ink-tertiary;
+}
+
+.lang-btn.is-active {
+  color: $paper;
+  background: $accent;
+  border-color: $accent;
+}
+
+// ---- Parcours : bloc de langue (bascule FR / EN)
+.lang-content {
+  display: none;
+}
+
+.lang-content.is-visible {
+  display: block;
+}
+
+// ---- Parcours : bouton de téléchargement du CV
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: calc($sp / 3);
+  font-size: $scale-sm;
+  font-weight: 600;
+  color: $ink;
+  border: 1px solid $ink;
+  border-radius: $radius;
+  padding: calc($sp / 3.2) calc($sp / 1.4);
+  margin-bottom: calc($sp * 0.4);
+  transition: color var(--motion-duration), border-color var(--motion-duration),
+    background-color var(--motion-duration);
+}
+
+.cv-download::before {
+  content: "↓";
+  font-family: $font-family-monospace;
+  font-weight: 400;
+}
+
+.cv-download:hover {
+  color: $paper;
+  background: $accent;
+  border-color: $accent;
+}
