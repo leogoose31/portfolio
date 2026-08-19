@@ -610,3 +610,10 @@ figcaption,
   margin-top: calc($sp / 3);
   max-width: 68ch;
 }
+
+// ---- Accueil : bloc « projet en vedette »
+.home-featured-label {
+  display: block;
+  margin-top: calc($sp * 1.5);
+  margin-bottom: calc($sp / 3);
+}

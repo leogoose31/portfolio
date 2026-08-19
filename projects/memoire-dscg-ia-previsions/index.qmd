@@ -54,7 +54,7 @@ Technique
 
 La visualisation révèle deux régimes de chiffre d'affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque `ruptures` (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J'ai donc réaligné la distribution antérieure via l'**Optimal Transport**, un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.
 
-![L'Optimal Transport relève la période antérieure au 23 juillet (en bleu) au niveau du régime récent (en rouge), pour homogénéiser la série d'entraînement.](img/fig-optimal-transport.png){fig-alt="Graphique montrant les données originales en bleu et les mêmes données transportées vers le haut en rouge après Optimal Transport."}
+![L'Optimal Transport relève la période antérieure au 23 juillet (en gris) au niveau du régime récent (en teal), pour homogénéiser la série d'entraînement.](img/fig-optimal-transport.png){fig-alt="Graphique montrant les données originales en gris et les mêmes données transportées vers le haut en teal après Optimal Transport."}
 
 ::: {.en-clair}
 **En clair :** à un moment, le restaurant a durablement changé de niveau d'activité (nouvelle carte, notoriété, travaux…). Apprendre sur « l'ancien » et « le nouveau » mélangés brouille tout. L'Optimal Transport remet l'ancienne période à l'échelle de la nouvelle, pour que le modèle apprenne sur une histoire cohérente.
@@ -120,7 +120,7 @@ Le découpage entraînement / test est **temporel** (90 / 10), jamais aléatoire
 
 Sur les données de test, jamais montrées au modèle, le chiffre d'affaires journalier est prédit avec une **erreur moyenne d'environ 219 €** (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l'entraînement qu'au test, le modèle est **partiellement surajusté**, et je le diagnostique sans le masquer.
 
-![Ventes réelles (bleu) contre prévisions du modèle XGBoost (rouge). La ligne verticale sépare les données d'entraînement (à gauche) des données de test (à droite) ; la partie finale prolonge la prévision au-delà des données disponibles.](img/fig-resultat-xgboost.png){fig-alt="Graphique comparant les ventes réelles en bleu et les prévisions XGBoost en rouge, avec une ligne verticale séparant entraînement et test."}
+![Ventes réelles (en gris) contre prévisions du modèle XGBoost (en teal). La ligne verticale sépare les données d'entraînement (à gauche) des données de test (à droite).](img/fig-resultat-xgboost.png){fig-alt="Graphique comparant les ventes réelles en gris et les prévisions XGBoost en teal, avec une ligne verticale séparant entraînement et test."}
 
 ::: {.en-clair}
 **En clair :** en moyenne, le modèle se trompe de ~219 € par jour sur des journées qu'il découvre. « Surajusté » veut dire qu'il a un peu trop appris par cœur son historique, au lieu de dégager la tendance générale.
@@ -141,5 +141,5 @@ L'analyse d'**importance des variables** confirme la lecture métier : la variab
 Deux prolongements naturels : un passage en **streaming** (un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution **Power BI** : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.
 
 ::: {.travail-meta}
-Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l'intelligence artificielle au sein de l'Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l'IA.
+Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l'intelligence artificielle au sein de l'Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l'IA. Les figures sont des reconstructions aux couleurs du portfolio, fidèles aux tendances du modèle.
 :::
