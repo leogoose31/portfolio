@@ -35,7 +35,7 @@ $headings-font-family:   $font-family-sans-serif;
 $headings-font-weight:   600;
 
 // Échelle typographique — ratio 1.25 (Major Third)
-$scale-xs:   0.64rem;  // labels uppercase
+$scale-xs:   0.7rem;   // labels uppercase (>= plancher de lisibilité 11px)
 $scale-sm:   0.8rem;   // méta, légendes, small
 $scale-base: 1rem;     // corps
 $scale-lg:   1.25rem;  // h3
@@ -144,9 +144,11 @@ $pre-color:  $ink;
 }
 
 // ---- Base
+// Pas de -webkit-font-smoothing: antialiased — il éclaircit le rendu du
+// texte (réduit le contraste effectif) ; on laisse le rendu par défaut,
+// plus dense et plus contrasté.
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 // ---- Navbar
@@ -234,16 +236,21 @@ h1, .quarto-title h1.title {
   margin-bottom: calc($sp / 4);
 }
 
+// Intertitre-label : mono majuscule, mais avec une présence de jalon —
+// couleur pleine + filet supérieur, pour qu'une section se lise comme un
+// repère de structure et ne « recule » pas sous le corps de texte.
 h2 {
   font-family: $font-family-monospace;
   font-size: $scale-sm;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: $ink-secondary;
-  margin-top: calc($sp * 2);
-  margin-bottom: calc($sp * 0.65);
+  color: $ink;
+  margin-top: calc($sp * 1.9);
+  margin-bottom: calc($sp * 0.75);
+  padding-top: calc($sp * 0.85);
   border: none;
+  border-top: 1px solid $rule;
 }
 
 h3 {
@@ -253,7 +260,11 @@ h3 {
   letter-spacing: -0.015em;
   margin-top: calc($sp * 1.15);
   margin-bottom: calc($sp / 6);
+  opacity: 1; // annule le opacity:.9 du thème Quarto (réduisait le contraste)
 }
+
+// Quarto applique opacity:.9 à h4/h5/h6 aussi — on rétablit le plein contraste
+h4, h5, h6 { opacity: 1; }
 
 // ---- Sous-titres Quarto
 p.subtitle.lead,
@@ -272,6 +283,11 @@ p {
   color: $ink;
   line-height: 1.65;
   margin-bottom: calc($sp * 0.6);
+  max-width: 68ch;
+}
+
+// Listes : même mesure de lecture que le corps (évite les lignes ~90 car.)
+li {
   max-width: 68ch;
 }
 

@@ -53,3 +53,4 @@ format:
       - default
       - custom.scss
     toc: false
+    anchor-sections: false
