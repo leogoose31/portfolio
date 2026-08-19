@@ -18,7 +18,22 @@ J'adopte une approche data driven dans tout ce que j'entreprends, jusqu'à l'ana
 [SQL · dbt · Python · Power BI]{.tools}
 
 ::: {.cta-links}
-[Parcours](about.html)
-[Projets](projects/index.html)
+[Parcours →](about.html)
+[Projets →](projects/index.html)
+:::
+:::
+
+[Projet en vedette]{.eyebrow .eyebrow--accent .home-featured-label}
+
+::: {.projet-card}
+## [Prévoir le chiffre d'affaires d'un restaurant, jour par jour](projects/memoire-dscg-ia-previsions/index.html)
+
+Un modèle XGBoost sur le journal de caisse : détection de rupture, Optimal Transport, feature engineering calendaire. MAE de 219 € en test, avec une lecture critique assumée du surajustement.
+
+::: {.tags}
+[Python]{.tag}
+[XGBoost]{.tag}
+[Optuna]{.tag}
+[Séries temporelles]{.tag}
 :::
 :::
