@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-091c3cd4ae248224db46d09edee246ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9452716287f306344e0d6318924f9fdd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c95b831836119d2ee717273accca8ede.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,14 +81,14 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/img/fig-jeu-de-donnees.png">
 <meta property="og:site_name" content="Léo Gouzy">
 <meta property="og:image:alt" content="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022.">
-<meta property="og:image:height" content="422">
-<meta property="og:image:width" content="1219">
+<meta property="og:image:height" content="527">
+<meta property="og:image:width" content="1564">
 <meta name="twitter:title" content="Prévoir le chiffre d’affaires d’un restaurant, jour par jour – Léo Gouzy">
 <meta name="twitter:description" content="Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage opérationnel. Mémoire DSCG, 2023.">
 <meta name="twitter:image" content="https://leogoose31.github.io/portfolio/projects/memoire-dscg-ia-previsions/img/fig-jeu-de-donnees.png">
 <meta name="twitter:image:alt" content="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022.">
-<meta name="twitter:image-height" content="422">
-<meta name="twitter:image-width" content="1219">
+<meta name="twitter:image-height" content="527">
+<meta name="twitter:image-width" content="1564">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -216,8 +216,8 @@ ul.task-list li input[type="checkbox"] {
 <p>La visualisation révèle deux régimes de chiffre d’affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque <code>ruptures</code> (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J’ai donc réaligné la distribution antérieure via l’<strong>Optimal Transport</strong>, un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/fig-optimal-transport.png" class="img-fluid figure-img" alt="Graphique montrant les données originales en bleu et les mêmes données transportées vers le haut en rouge après Optimal Transport."></p>
-<figcaption>L’Optimal Transport relève la période antérieure au 23 juillet (en bleu) au niveau du régime récent (en rouge), pour homogénéiser la série d’entraînement.</figcaption>
+<p><img src="img/fig-optimal-transport.png" class="img-fluid figure-img" alt="Graphique montrant les données originales en gris et les mêmes données transportées vers le haut en teal après Optimal Transport."></p>
+<figcaption>L’Optimal Transport relève la période antérieure au 23 juillet (en gris) au niveau du régime récent (en teal), pour homogénéiser la série d’entraînement.</figcaption>
 </figure>
 </div>
 <div class="en-clair">
@@ -325,8 +325,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Sur les données de test, jamais montrées au modèle, le chiffre d’affaires journalier est prédit avec une <strong>erreur moyenne d’environ 219 €</strong> (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l’entraînement qu’au test, le modèle est <strong>partiellement surajusté</strong>, et je le diagnostique sans le masquer.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/fig-resultat-xgboost.png" class="img-fluid figure-img" alt="Graphique comparant les ventes réelles en bleu et les prévisions XGBoost en rouge, avec une ligne verticale séparant entraînement et test."></p>
-<figcaption>Ventes réelles (bleu) contre prévisions du modèle XGBoost (rouge). La ligne verticale sépare les données d’entraînement (à gauche) des données de test (à droite) ; la partie finale prolonge la prévision au-delà des données disponibles.</figcaption>
+<p><img src="img/fig-resultat-xgboost.png" class="img-fluid figure-img" alt="Graphique comparant les ventes réelles en gris et les prévisions XGBoost en teal, avec une ligne verticale séparant entraînement et test."></p>
+<figcaption>Ventes réelles (en gris) contre prévisions du modèle XGBoost (en teal). La ligne verticale sépare les données d’entraînement (à gauche) des données de test (à droite).</figcaption>
 </figure>
 </div>
 <div class="en-clair">
@@ -348,7 +348,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <p>Deux prolongements naturels : un passage en <strong>streaming</strong> (un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution <strong>Power BI</strong> : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.</p>
 <div class="travail-meta">
-<p>Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l’intelligence artificielle au sein de l’Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l’IA.</p>
+<p>Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l’intelligence artificielle au sein de l’Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l’IA. Les figures sont des reconstructions aux couleurs du portfolio, fidèles aux tendances du modèle.</p>
 </div>
 
 
