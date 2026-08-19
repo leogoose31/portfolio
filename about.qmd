@@ -81,10 +81,8 @@ via SHAP pour identifier les principaux drivers de performance, restitués en da
 |---|---|
 | Finance | Reporting financier, forecasting, analyse P&L, contrôle interne, consolidation, IFRS |
 | Données | SQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (avancé) |
-
-::: {.travail-meta}
-Systèmes : SAP, ITGC/ITAC · Langues : Français (natif), Anglais (B2+)
-:::
+| Systèmes | SAP, ITGC/ITAC |
+| Langues | Français (natif), Anglais (B2+) |
 
 ## Hors du bureau
 
@@ -162,10 +160,8 @@ insights and an interactive forecasting dashboard.
 |---|---|
 | Finance | Financial reporting, forecasting, P&L analysis, internal control, consolidation, IFRS |
 | Data | SQL, Python, dbt, BigQuery, Alteryx, Power BI, Excel (advanced) |
-
-::: {.travail-meta}
-Systems: SAP, ITGC/ITAC · Languages: French (native), English (professional, B2+)
-:::
+| Systems | SAP, ITGC/ITAC |
+| Languages | French (native), English (professional, B2+) |
 
 ## Outside the office
 
