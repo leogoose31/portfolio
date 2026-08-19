@@ -20,14 +20,14 @@ toc: false
 Mémorialiste DEC, titulaire du DSCG, certifié Analytics Engineer (DataBird, 2025).
 
 Je maîtrise les référentiels comptables, les processus business et les contrôles internes
-d'un auditeur classique — et j'interroge moi-même les bases qui produisent les chiffres,
+d'un auditeur classique, et j'interroge moi-même les bases qui produisent les chiffres,
 en SQL, dbt et Python, plutôt que de m'arrêter à l'échantillon.
 
 ## Expérience
 
 ### Forvis Mazars — Auditeur senior & Data Analytics
 ::: {.travail-meta}
-Toulouse · depuis septembre 2025 — promotion interne
+Toulouse · depuis septembre 2025, promotion interne
 :::
 
 Supervision d'une équipe de 3 à 5 auditeurs sur des missions grands comptes : planification,
@@ -38,17 +38,17 @@ plus d'un milliard d'euros. Audit combiné financier et SI, coordination interna
 
 ### Forvis Mazars — Auditeur financier & SI
 ::: {.travail-meta}
-Toulouse · novembre 2023 — août 2025
+Toulouse · novembre 2023 à août 2025
 :::
 
 Audit des contrôles financiers et des systèmes d'information (ITGC/ITAC) sous SAP et autres
-ERP. Analyse de données sur les cycles revenus, stocks et charges — traitement de jeux de
+ERP. Analyse de données sur les cycles revenus, stocks et charges : traitement de jeux de
 données de plus d'un million d'écritures pour la détection d'anomalies et la validation des
 assertions financières.
 
 ### Orcom — Apprenti comptable
 ::: {.travail-meta}
-Toulouse · septembre 2021 — octobre 2023
+Toulouse · septembre 2021 à octobre 2023
 :::
 
 Gestion d'un portefeuille clients multi-secteurs : préparation des états financiers,
@@ -71,8 +71,8 @@ via SHAP pour identifier les principaux drivers de performance, restitués en da
 
 | | |
 |---|---|
-| DEC | Mémorialiste — en cours · Ordre des Experts-Comptables, Toulouse |
-| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase |
+| DEC | Mémorialiste, en cours · Ordre des Experts-Comptables, Toulouse |
+| Analytics Engineer | DataBird · 2025 · BigQuery, dbt, Fivetran, Git, Metabase |
 | DSCG | Institut Limayrac · Toulouse · 2023 |
 
 ## Compétences
@@ -101,14 +101,14 @@ French CPA candidate (Expert-Comptable Mémorialiste), DSCG graduate, Certified 
 Engineer (DataBird, 2025).
 
 I bring the accounting standards, business processes and internal-control fluency of a classic
-auditor — and I query the databases that produce the numbers myself, in SQL, dbt and Python,
+auditor, and I query the databases that produce the numbers myself, in SQL, dbt and Python,
 rather than stopping at the sample.
 
 ## Experience
 
 ### Forvis Mazars — Senior Auditor & Data Analytics
 ::: {.travail-meta}
-Toulouse · since September 2025 — internal promotion
+Toulouse · since September 2025, internal promotion
 :::
 
 Led and supervised a team of 3 to 5 auditors on large-cap engagements: planning, work review
@@ -118,16 +118,16 @@ and IT audits, with cross-functional international coordination across 15 countr
 
 ### Forvis Mazars — Financial & IT Auditor
 ::: {.travail-meta}
-Toulouse · November 2023 — August 2025
+Toulouse · November 2023 to August 2025
 :::
 
 Audited financial controls and information systems (ITGC/ITAC) across SAP and other ERP
-environments. Data analytics on key cycles — revenue, inventory, expenses — leveraging datasets
+environments. Data analytics on key cycles (revenue, inventory, expenses), leveraging datasets
 of 1M+ journal entries for anomaly detection and validation of financial assertions.
 
 ### Orcom — Accounting Apprentice
 ::: {.travail-meta}
-Toulouse · September 2021 — October 2023
+Toulouse · September 2021 to October 2023
 :::
 
 Managed a multi-sector client portfolio: prepared financial statements and supported business
@@ -143,7 +143,7 @@ Toulouse · since December 2025
 
 Revenue forecasting model (XGBoost) trained on 3+ years of historical data, with feature
 engineering across multi-source variables (weather, school calendar, local events, seasonality).
-SHAP values for prediction interpretability — key performance drivers translated into actionable
+SHAP values for prediction interpretability: key performance drivers translated into actionable
 insights and an interactive forecasting dashboard.
 
 ## Education
@@ -151,7 +151,7 @@ insights and an interactive forecasting dashboard.
 | | |
 |---|---|
 | French CPA (DEC) | In progress · Ordre des Experts-Comptables, Toulouse |
-| Analytics Engineer | DataBird · 2025 — BigQuery, dbt, Fivetran, Git, Metabase |
+| Analytics Engineer | DataBird · 2025 · BigQuery, dbt, Fivetran, Git, Metabase |
 | DSCG | Advanced Diploma in Accounting & Management · Institut Limayrac, Toulouse · 2023 |
 
 ## Skills
@@ -165,7 +165,7 @@ insights and an interactive forecasting dashboard.
 
 ## Outside the office
 
-The same reflex off the clock: two years of training data — cycling and running — analysed like any other dataset.
+The same reflex off the clock: two years of training data, cycling and running, analysed like any other dataset.
 
 :::
 

@@ -15,22 +15,22 @@ subtitle: "Un modèle XGBoost entraîné sur le journal de caisse pour transform
 
 Le prévisionnel comptable « classique » repose sur des moyennes, une hypothèse de marge constante et une granularité mensuelle, voire annuelle. Il suppose que demain ressemblera à hier : il ne capte ni la saisonnalité fine d'une activité, ni les jours de la semaine, et reste exposé aux erreurs de jugement humain. Daniel Kahneman en distingue deux : le **biais** (se tromper toujours dans le même sens) et le **bruit** (deux personnes, mêmes chiffres, prévisions différentes).
 
-La question posée par le mémoire : peut-on prévoir le chiffre d'affaires **journalier** d'un restaurant à partir de ses seules données comptables, avec une précision suffisante pour en faire un outil de pilotage — achats, stocks, plannings ? L'enjeu est double, économique et environnemental : mieux anticiper, c'est acheter au plus juste et moins jeter.
+La question posée par le mémoire : peut-on prévoir le chiffre d'affaires **journalier** d'un restaurant à partir de ses seules données comptables, avec une précision suffisante pour en faire un outil de pilotage (achats, stocks, plannings) ? L'enjeu est double, économique et environnemental : mieux anticiper, c'est acheter au plus juste et moins jeter.
 
 ::: {.en-clair}
-**En clair —** un prévisionnel comptable traditionnel dit « le mois prochain, environ X ». Ici, on cherche à dire « samedi prochain, environ Y » — assez précis pour qu'un restaurateur sache combien commander et combien de personnes faire travailler.
+**En clair :** un prévisionnel comptable traditionnel dit « le mois prochain, environ X ». Ici, on cherche à dire « samedi prochain, environ Y », assez précis pour qu'un restaurateur sache combien commander et combien de personnes faire travailler.
 :::
 
 ## Les données
 
 Point de départ : la caisse informatisée du client. Les encaissements sont détaillés par jour et ventilés par taux de TVA, puis remontés via une API. C'est ce **journal de caisse**, du **01/04/2018 au 30/03/2023** et entièrement **anonymisé**, qui a servi de base d'entraînement.
 
-Choix assumé : prédire le chiffre d'affaires **à partir de lui-même**, sans donnée externe. À cette granularité, aucune source météo ou sectorielle n'a été jugée assez pertinente pour justifier sa complexité. Le nettoyage a consisté à retirer les jours de fermeture — repos hebdomadaire et fermetures administratives Covid — repérés en traçant la série.
+Choix assumé : prédire le chiffre d'affaires **à partir de lui-même**, sans donnée externe. À cette granularité, aucune source météo ou sectorielle n'a été jugée assez pertinente pour justifier sa complexité. Le nettoyage a consisté à retirer les jours de fermeture (repos hebdomadaire et fermetures administratives Covid), repérés en traçant la série.
 
 ![Le chiffre d'affaires journalier de 2018 à 2023. Les deux paliers plats correspondent aux fermetures Covid ; le niveau grimpe nettement à partir de mi-2022.](img/fig-jeu-de-donnees.png){fig-alt="Série temporelle du chiffre d'affaires journalier de 2018 à 2023, montrant deux interruptions Covid et une hausse de niveau à partir de mi-2022."}
 
 ::: {.en-clair}
-**En clair —** la matière première n'est pas un fichier de data science tout prêt : c'est la caisse réelle d'un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.
+**En clair :** la matière première n'est pas un fichier de data science tout prêt : c'est la caisse réelle d'un vrai restaurant. Une bonne partie du travail est de la rendre exploitable sans trahir les chiffres.
 :::
 
 ## L'approche
@@ -52,12 +52,12 @@ Journal de caisse — CA journalier par TVA (2018 → 2023)
 Technique
 :::
 
-La visualisation révèle deux régimes de chiffre d'affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque `ruptures` (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J'ai donc réaligné la distribution antérieure via l'**Optimal Transport** — un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.
+La visualisation révèle deux régimes de chiffre d'affaires séparés par un point de rupture, détecté automatiquement avec la bibliothèque `ruptures` (au 23 juillet). Entraîner un modèle sur une série qui « change de niveau » en cours de route le fausse. J'ai donc réaligné la distribution antérieure via l'**Optimal Transport**, un procédé mathématique qui mesure le « coût » pour transformer une distribution en une autre, et déplace ici les valeurs anciennes vers le niveau récent. Sans ce réalignement, le modèle sous-évaluait systématiquement les données de test.
 
 ![L'Optimal Transport relève la période antérieure au 23 juillet (en bleu) au niveau du régime récent (en rouge), pour homogénéiser la série d'entraînement.](img/fig-optimal-transport.png){fig-alt="Graphique montrant les données originales en bleu et les mêmes données transportées vers le haut en rouge après Optimal Transport."}
 
 ::: {.en-clair}
-**En clair —** à un moment, le restaurant a durablement changé de niveau d'activité (nouvelle carte, notoriété, travaux…). Apprendre sur « l'ancien » et « le nouveau » mélangés brouille tout. L'Optimal Transport remet l'ancienne période à l'échelle de la nouvelle, pour que le modèle apprenne sur une histoire cohérente.
+**En clair :** à un moment, le restaurant a durablement changé de niveau d'activité (nouvelle carte, notoriété, travaux…). Apprendre sur « l'ancien » et « le nouveau » mélangés brouille tout. L'Optimal Transport remet l'ancienne période à l'échelle de la nouvelle, pour que le modèle apprenne sur une histoire cohérente.
 :::
 
 ### Feature engineering : de 2 à 16 colonnes
@@ -71,7 +71,7 @@ Le jeu de départ ne contient que deux colonnes : date et chiffre d'affaires. J'
 ![Zoom sur un mois : la structure hebdomadaire saute aux yeux, avec des pics réguliers de week-end. C'est exactement ce que les variables calendaires permettent au modèle de capter.](img/fig-saisonnalite-hebdo.png){fig-alt="Série du chiffre d'affaires sur un mois montrant une nette périodicité hebdomadaire, avec des pics le week-end."}
 
 ::: {.en-clair}
-**En clair —** une date seule (« 2023-07-15 ») ne dit rien à un modèle. En la décomposant en « samedi », « mi-juillet », « milieu de mois », on lui donne les indices qu'un gérant utilise intuitivement pour savoir si la journée sera chargée.
+**En clair :** une date seule (« 2023-07-15 ») ne dit rien à un modèle. En la décomposant en « samedi », « mi-juillet », « milieu de mois », on lui donne les indices qu'un gérant utilise intuitivement pour savoir si la journée sera chargée.
 :::
 
 ### Encodage cible sans fuite de données
@@ -80,10 +80,10 @@ Le jeu de départ ne contient que deux colonnes : date et chiffre d'affaires. J'
 Technique
 :::
 
-Les variables catégorielles (le mois, par exemple) sont remplacées par la moyenne du chiffre d'affaires associé — un *target encoding*. Le piège classique est la **fuite de données** : si l'on calcule cette moyenne sur l'ensemble des données, le modèle « voit » indirectement la réponse qu'il est censé deviner. Pour l'éviter, l'encodage est réalisé **sous validation croisée** : chaque portion de données est encodée à partir des autres, jamais d'elle-même.
+Les variables catégorielles (le mois, par exemple) sont remplacées par la moyenne du chiffre d'affaires associé, un *target encoding*. Le piège classique est la **fuite de données** : si l'on calcule cette moyenne sur l'ensemble des données, le modèle « voit » indirectement la réponse qu'il est censé deviner. Pour l'éviter, l'encodage est réalisé **sous validation croisée** : chaque portion de données est encodée à partir des autres, jamais d'elle-même.
 
 ::: {.en-clair}
-**En clair —** on veut noter le modèle sur des jours qu'il n'a jamais vus. Si on le laisse tricher en regardant les réponses pendant qu'il révise, sa note ne veut plus rien dire. La validation croisée l'empêche de tricher.
+**En clair :** on veut noter le modèle sur des jours qu'il n'a jamais vus. Si on le laisse tricher en regardant les réponses pendant qu'il révise, sa note ne veut plus rien dire. La validation croisée l'empêche de tricher.
 :::
 
 ### Le modèle : Gradient Boosting, puis XGBoost
@@ -96,19 +96,19 @@ Le **Gradient Boosting** construit une série de petits modèles (des arbres de 
 
 > Exemple : prévision de départ 1 000 €, réel 1 200 € → résidu de 200 €. Avec un taux d'apprentissage de 0,2, la nouvelle prévision devient 1 000 + (0,2 × 200) = **1 040 €**. On s'approche, arbre après arbre.
 
-Parmi les implémentations, le choix est raisonné : Gradient Boosting Machine (trop simple), LightGBM (taillé pour les très gros volumes, inadapté à un jeu de données restreint), puis **XGBoost** — retenu pour sa régularisation intégrée contre le surajustement et sa parallélisation. Les hyperparamètres ont été optimisés automatiquement avec **Optuna** :
+Parmi les implémentations, le choix est raisonné : Gradient Boosting Machine (trop simple), LightGBM (taillé pour les très gros volumes, inadapté à un jeu de données restreint), puis **XGBoost**, retenu pour sa régularisation intégrée contre le surajustement et sa parallélisation. Les hyperparamètres ont été optimisés automatiquement avec **Optuna** :
 
 | Hyperparamètre | Rôle |
 |---|---|
-| `learning_rate` | Part de chaque arbre dans la prévision finale — plus faible = plus fin, mais plus d'arbres |
-| `n_estimators` | Nombre d'arbres — trop élevé = risque de surapprentissage |
-| `max_depth` | Profondeur des arbres — profond = capte le détail, mais surapprend |
-| `subsample` | Part des données utilisée par arbre — bride la spécialisation excessive |
+| `learning_rate` | Part de chaque arbre dans la prévision finale : plus faible = plus fin, mais plus d'arbres |
+| `n_estimators` | Nombre d'arbres : trop élevé = risque de surapprentissage |
+| `max_depth` | Profondeur des arbres : profond = capte le détail, mais surapprend |
+| `subsample` | Part des données utilisée par arbre : bride la spécialisation excessive |
 
 Le découpage entraînement / test est **temporel** (90 / 10), jamais aléatoire : dans une série chronologique, mélanger le passé et le futur reviendrait à s'entraîner sur des jours postérieurs à ceux qu'on prétend prédire.
 
 ::: {.en-clair}
-**En clair —** le modèle avance par petites corrections successives, comme un tireur qui ajuste sa visée à chaque essai. Optuna se charge de régler les molettes du modèle à notre place, et on teste toujours sur la période la plus récente — celle qu'il n'a pas vue.
+**En clair :** le modèle avance par petites corrections successives, comme un tireur qui ajuste sa visée à chaque essai. Optuna se charge de régler les molettes du modèle à notre place, et on teste toujours sur la période la plus récente, celle qu'il n'a pas vue.
 :::
 
 ## Le résultat
@@ -118,27 +118,27 @@ Le découpage entraînement / test est **temporel** (90 / 10), jamais aléatoire
 | MAE  | 90 €  | 219 € | 103 € |
 | RMSE | 118 € | 290 € | 144 € |
 
-Sur les données de test — jamais montrées au modèle — le chiffre d'affaires journalier est prédit avec une **erreur moyenne d'environ 219 €** (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l'entraînement qu'au test, le modèle est **partiellement surajusté** — je le diagnostique sans le masquer.
+Sur les données de test, jamais montrées au modèle, le chiffre d'affaires journalier est prédit avec une **erreur moyenne d'environ 219 €** (MAE). La RMSE, qui pénalise davantage les gros écarts, monte à 290 € : signe que la plupart des jours sont bien prédits, mais que quelques-uns le sont franchement mal. Et comme les erreurs sont plus faibles à l'entraînement qu'au test, le modèle est **partiellement surajusté**, et je le diagnostique sans le masquer.
 
 ![Ventes réelles (bleu) contre prévisions du modèle XGBoost (rouge). La ligne verticale sépare les données d'entraînement (à gauche) des données de test (à droite) ; la partie finale prolonge la prévision au-delà des données disponibles.](img/fig-resultat-xgboost.png){fig-alt="Graphique comparant les ventes réelles en bleu et les prévisions XGBoost en rouge, avec une ligne verticale séparant entraînement et test."}
 
 ::: {.en-clair}
-**En clair —** en moyenne, le modèle se trompe de ~219 € par jour sur des journées qu'il découvre. « Surajusté » veut dire qu'il a un peu trop appris par cœur son historique, au lieu de dégager la tendance générale.
+**En clair :** en moyenne, le modèle se trompe de ~219 € par jour sur des journées qu'il découvre. « Surajusté » veut dire qu'il a un peu trop appris par cœur son historique, au lieu de dégager la tendance générale.
 :::
 
-L'analyse d'**importance des variables** confirme la lecture métier : la variable **week-end** arrive en tête, suivie du **jour de la semaine**, puis du jour de l'année (saisonnalité). Le modèle a bien capté ce qu'un gérant sait d'instinct — les pics tombent le week-end. Un angle mort révélateur : faute de variable « jours fériés », le modèle surestime nettement le **24 décembre**.
+L'analyse d'**importance des variables** confirme la lecture métier : la variable **week-end** arrive en tête, suivie du **jour de la semaine**, puis du jour de l'année (saisonnalité). Le modèle a bien capté ce qu'un gérant sait d'instinct : les pics tombent le week-end. Un angle mort révélateur : faute de variable « jours fériés », le modèle surestime nettement le **24 décembre**.
 
 ## Limites
 
-- **Surajustement partiel** — pistes de correction : plus de données d'entraînement, variables externes, ou réingénierie des résidus.
-- **Pas de variable « jours fériés »** — d'où la surestimation du 24 décembre.
-- **Dépendance à une fréquence de données élevée** — le même modèle sur une TPE du bâtiment, aux chantiers irréguliers, serait bien moins précis.
-- **Les chocs imprévisibles le restent** — aucune de ces méthodes n'aurait anticipé le Covid.
-- **Un seuil de livraison reste à fixer** — à partir de quelle MAE / RMSE un prévisionnel est-il assez fiable pour être présenté à un client ? La question se tranche *avant* la mission, pas après.
+- **Surajustement partiel** : plus de données d'entraînement, variables externes, ou réingénierie des résidus.
+- **Pas de variable « jours fériés »** : d'où la surestimation du 24 décembre.
+- **Dépendance à une fréquence de données élevée** : le même modèle sur une TPE du bâtiment, aux chantiers irréguliers, serait bien moins précis.
+- **Les chocs imprévisibles le restent** : aucune de ces méthodes n'aurait anticipé le Covid.
+- **Un seuil de livraison reste à fixer** : à partir de quelle MAE / RMSE un prévisionnel est-il assez fiable pour être présenté à un client ? La question se tranche *avant* la mission, pas après.
 
 ## Pour aller plus loin
 
-Deux prolongements naturels : un passage en **streaming** — un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée — et une restitution **Power BI** : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.
+Deux prolongements naturels : un passage en **streaming** (un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution **Power BI** : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.
 
 ::: {.travail-meta}
 Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l'intelligence artificielle au sein de l'Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l'IA.
