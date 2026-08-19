@@ -327,7 +327,7 @@ table,
   font-family: $font-family-monospace;
   font-size: $scale-sm;
   color: $ink-secondary;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
   margin-top: calc($sp * 0.55);
   margin-bottom: 0;
 }
@@ -394,14 +394,25 @@ table td:first-child {
   border-bottom: 1px solid $rule;
 }
 
-.projet-card h3 { margin-top: 0; }
-
-.projet-card h3 a {
+// Titre de carte : h2 (niveau document correct sous le h1 de page), mais
+// stylé comme un titre de carte — pas comme l'intertitre mono par défaut.
+.projet-card h2 {
+  font-family: $font-family-sans-serif;
+  font-size: $scale-lg;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
   color: $ink;
-  border-bottom: 1px solid $rule;
+  margin: 0 0 calc($sp / 3);
 }
 
-.projet-card h3 a:hover {
+.projet-card h2 a {
+  color: $ink;
+  border-bottom: 1px solid transparent;
+}
+
+.projet-card h2 a:hover {
   color: $accent;
   border-bottom-color: $accent;
 }
@@ -421,7 +432,7 @@ table td:first-child {
 // ---- Tags
 .tag {
   font-family: $font-family-monospace;
-  font-size: $scale-xs * 1.07;
+  font-size: $scale-sm;
   color: $ink-secondary;
   background: $paper-alt;
   padding: calc($sp / 10) calc($sp / 3);
@@ -552,7 +563,6 @@ hr {
 
 // ---- Projet : encadré de vulgarisation « En clair »
 .en-clair {
-  border-left: 3px solid $accent;
   background: $paper-alt;
   padding: calc($sp / 1.6) calc($sp / 1.3);
   margin: calc($sp * 0.9) 0;
