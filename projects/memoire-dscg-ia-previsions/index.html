@@ -41,12 +41,11 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-091c3cd4ae248224db46d09edee246ef.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c95b831836119d2ee717273accca8ede.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-8362a226de91fdc9f62563ed491de8a0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -177,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="tag">Python</span> <span class="tag">XGBoost</span> <span class="tag">Optuna</span> <span class="tag">Séries temporelles</span> <span class="tag">Feature engineering</span></p>
 </div>
 <section id="le-problème" class="level2">
-<h2 class="anchored" data-anchor-id="le-problème">Le problème</h2>
+<h2 data-anchor-id="le-problème">Le problème</h2>
 <p>Le prévisionnel comptable « classique » repose sur des moyennes, une hypothèse de marge constante et une granularité mensuelle, voire annuelle. Il suppose que demain ressemblera à hier : il ne capte ni la saisonnalité fine d’une activité, ni les jours de la semaine, et reste exposé aux erreurs de jugement humain. Daniel Kahneman en distingue deux : le <strong>biais</strong> (se tromper toujours dans le même sens) et le <strong>bruit</strong> (deux personnes, mêmes chiffres, prévisions différentes).</p>
 <p>La question posée par le mémoire : peut-on prévoir le chiffre d’affaires <strong>journalier</strong> d’un restaurant à partir de ses seules données comptables, avec une précision suffisante pour en faire un outil de pilotage (achats, stocks, plannings) ? L’enjeu est double, économique et environnemental : mieux anticiper, c’est acheter au plus juste et moins jeter.</p>
 <div class="en-clair">
@@ -185,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="les-données" class="level2">
-<h2 class="anchored" data-anchor-id="les-données">Les données</h2>
+<h2 data-anchor-id="les-données">Les données</h2>
 <p>Point de départ : la caisse informatisée du client. Les encaissements sont détaillés par jour et ventilés par taux de TVA, puis remontés via une API. C’est ce <strong>journal de caisse</strong>, du <strong>01/04/2018 au 30/03/2023</strong> et entièrement <strong>anonymisé</strong>, qui a servi de base d’entraînement.</p>
 <p>Choix assumé : prédire le chiffre d’affaires <strong>à partir de lui-même</strong>, sans donnée externe. À cette granularité, aucune source météo ou sectorielle n’a été jugée assez pertinente pour justifier sa complexité. Le nettoyage a consisté à retirer les jours de fermeture (repos hebdomadaire et fermetures administratives Covid), repérés en traçant la série.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -199,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="lapproche" class="level2">
-<h2 class="anchored" data-anchor-id="lapproche">L’approche</h2>
+<h2 data-anchor-id="lapproche">L’approche</h2>
 <pre><code>Journal de caisse — CA journalier par TVA (2018 → 2023)
     └── Python (pandas)
             ├── nettoyage           — retrait des jours fermés (repos, Covid)
@@ -209,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
             ├── target encoding      — sous cross-validation (anti-fuite)
             └── XGBoost + Optuna      — split temporel 90 / 10</code></pre>
 <section id="détection-de-rupture-et-optimal-transport" class="level3">
-<h3 class="anchored" data-anchor-id="détection-de-rupture-et-optimal-transport">Détection de rupture et Optimal Transport</h3>
+<h3 data-anchor-id="détection-de-rupture-et-optimal-transport">Détection de rupture et Optimal Transport</h3>
 <div class="bloc-technique">
 <p>Technique</p>
 </div>
@@ -225,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="feature-engineering-de-2-à-16-colonnes" class="level3">
-<h3 class="anchored" data-anchor-id="feature-engineering-de-2-à-16-colonnes">Feature engineering : de 2 à 16 colonnes</h3>
+<h3 data-anchor-id="feature-engineering-de-2-à-16-colonnes">Feature engineering : de 2 à 16 colonnes</h3>
 <div class="bloc-technique">
 <p>Technique</p>
 </div>
@@ -241,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="encodage-cible-sans-fuite-de-données" class="level3">
-<h3 class="anchored" data-anchor-id="encodage-cible-sans-fuite-de-données">Encodage cible sans fuite de données</h3>
+<h3 data-anchor-id="encodage-cible-sans-fuite-de-données">Encodage cible sans fuite de données</h3>
 <div class="bloc-technique">
 <p>Technique</p>
 </div>
@@ -251,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </section>
 <section id="le-modèle-gradient-boosting-puis-xgboost" class="level3">
-<h3 class="anchored" data-anchor-id="le-modèle-gradient-boosting-puis-xgboost">Le modèle : Gradient Boosting, puis XGBoost</h3>
+<h3 data-anchor-id="le-modèle-gradient-boosting-puis-xgboost">Le modèle : Gradient Boosting, puis XGBoost</h3>
 <div class="bloc-technique">
 <p>Technique</p>
 </div>
@@ -297,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="le-résultat" class="level2">
-<h2 class="anchored" data-anchor-id="le-résultat">Le résultat</h2>
+<h2 data-anchor-id="le-résultat">Le résultat</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -335,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
 <p>L’analyse d’<strong>importance des variables</strong> confirme la lecture métier : la variable <strong>week-end</strong> arrive en tête, suivie du <strong>jour de la semaine</strong>, puis du jour de l’année (saisonnalité). Le modèle a bien capté ce qu’un gérant sait d’instinct : les pics tombent le week-end. Un angle mort révélateur : faute de variable « jours fériés », le modèle surestime nettement le <strong>24 décembre</strong>.</p>
 </section>
 <section id="limites" class="level2">
-<h2 class="anchored" data-anchor-id="limites">Limites</h2>
+<h2 data-anchor-id="limites">Limites</h2>
 <ul>
 <li><strong>Surajustement partiel</strong> : plus de données d’entraînement, variables externes, ou réingénierie des résidus.</li>
 <li><strong>Pas de variable « jours fériés »</strong> : d’où la surestimation du 24 décembre.</li>
@@ -345,7 +344,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="pour-aller-plus-loin" class="level2">
-<h2 class="anchored" data-anchor-id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<h2 data-anchor-id="pour-aller-plus-loin">Pour aller plus loin</h2>
 <p>Deux prolongements naturels : un passage en <strong>streaming</strong> (un flux continu de la caisse vers le modèle, réentraîné à fréquence maîtrisée) et une restitution <strong>Power BI</strong> : prévisions côté client, tableaux de bord de monitoring des métriques côté cabinet.</p>
 <div class="travail-meta">
 <p>Réalisé dans le cadre du mémoire DSCG (UE7, 2023) : « Intégration de l’intelligence artificielle au sein de l’Expertise Comptable : vers une amélioration des prévisions financières », complété par une enquête auprès de 24 experts-comptables sur leur adoption de l’IA. Les figures sont des reconstructions aux couleurs du portfolio, fidèles aux tendances du modèle.</p>
@@ -357,13 +356,6 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
