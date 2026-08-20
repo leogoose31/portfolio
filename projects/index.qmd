@@ -3,6 +3,19 @@ title: "Projets"
 ---
 
 ::: {.projet-card}
+## [Une réception de 35 M€ pour une commande de 4 000 €](tableau-de-bord-achats-3wm/index.html)
+
+Le rapprochement automatisé des commandes, réceptions et factures d'un groupe industriel — 15 000 commandes par jour — pour faire remonter les anomalies invisibles dans l'ERP.
+
+::: {.tags}
+[Alteryx]{.tag}
+[Power BI]{.tag}
+[SAP S/4HANA]{.tag}
+[Procure-to-Pay]{.tag}
+:::
+:::
+
+::: {.projet-card}
 ## [Prévoir le chiffre d'affaires d'un restaurant, jour par jour](memoire-dscg-ia-previsions/index.html)
 
 Un modèle XGBoost entraîné sur le journal de caisse pour transformer un prévisionnel statique en outil de pilotage — stocks et plannings.
